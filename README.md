@@ -98,7 +98,7 @@ When you discover something about a model, add it here:
 evaluations/       — Structured evaluations of specific models on specific tasks
 experiments/       — A/B comparisons, multi-model tests
 integrations/      — How models work together (adversarial pairs, pipelines)
-guides/            — How-to guides for common casting decisions
+guides/            — (coming soon) How-to guides for common casting decisions
 ROSTER.md          — This file — the living reference
 ```
 
