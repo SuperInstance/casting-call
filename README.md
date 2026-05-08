@@ -17,15 +17,17 @@ Agents read this repo before choosing which model embodies which shell. Not vibe
 | Model | Best Role | Worst Role | Cost | Speed | Notes |
 |-------|-----------|------------|------|-------|-------|
 | **GLM-5.1** | Heavy orchestration, long-context reasoning | Tight code generation | $$$ | Medium | Our daily driver. Handles complex multi-step planning. |
-| **DeepSeek v4-flash** | Wide parallel tasks, fast audits, summaries | Deep reasoning (0-token truncation risk), long writing | $ | Fast | Cheap workhorse. Spawn 10, accept 7. 3 will truncate. |
+| **DeepSeek v4-flash** | Wide parallel tasks, fast audits, summaries | Deep reasoning (30% truncation rate), long writing | $ | Fast | Cheap workhorse. Spawn 10, accept 7. ~30% truncation confirmed stable. |
 | **DeepSeek v4-pro/reasoner** | Formal proofs, mathematical reasoning | Anything time-sensitive | $$ | Slow (60s+) | Deep chain-of-thought. Burns output budget on hard problems. |
-| **Seed-2.0-mini** | Primary failback code gen, diverse perspective checks | Very long outputs | $ | Fast | Surprisingly good at code. 4.8/5 on negative knowledge evaluation. |
+| **Seed-2.0-mini** | Primary failback code gen, diverse perspective checks | Very long outputs, intermittent timeouts | $ | Fast | Surprisingly good at code. 4.8/5 on negative knowledge. ~25% SIGKILL timeout rate. |
 | **Seed-2.0-pro** | Research synthesis, expert panel simulation | Quick iterations | $$ | Medium | Confirmed real-world references (Boeing 787, Tesla FSD). |
 | **Seed-2.0-code** | Focused code modules, single-file generation | Architecture design | $ | Fast | Tight, clean code output. |
 | **Qwen3-235B-A22B** | Cross-model replication, adversarial critique | Quick turnaround tasks | $$ | Medium | 50/50 on reverse-actualization. Strong independent evaluator. |
 | **Qwen3.5-397B-A17B** | Jazz/music improvisation analogies, creative reasoning | Factual verification | $$ | Medium | Found "grinding against rocks" insight in art domains. |
+| **Hermes-3-Llama-3.1-405B** | Deep literary/voice evaluation, skeptical critique, honest assessment | Quick iterations | $$ | Medium | Best model for honest evaluation. 4.5/5 voice analysis. Resists sycophancy. |
 | **Hermes-3-Llama-3.1-70B** | Structured critique, devil's advocate | Creative generation | $ | Fast | "Calculator Trap" counterexample was the strongest adversarial finding. |
 | **Gemma-4-26B** | Quick cross-validation, second opinion | Heavy lifting | $ | Fast | Good for "does this smell right?" checks. |
+| **Nemotron-30B** (Nano-30B-A3B) | Coding subagent fallback, README writing, text analysis | Creative generation, voice work | $ | Medium | 9/10 repos successful on README cross-pollination. 4/5 technical accuracy. |
 | **Nemotron** | Adversarial testing, constraint verification | Open-ended generation | $ | Fast | Lacks separate reasoning chain — less rigorous as prover. |
 
 ## Role Taxonomy
@@ -43,17 +45,25 @@ Roles are what you need done. Models are who you cast.
 | **Play-tester** | Role-playing diverse personas | Seed-2.0-mini, Qwen3-235B | Expensive models (waste of budget) |
 | **Validator** | Link checking, markdown rendering | DeepSeek flash | Any (simple task) |
 | **Researcher** | Literature synthesis, cross-referencing | Seed-2.0-pro, GLM-5.1 | Models that fabricate citations |
-| **Critic** | Honest assessment, no fluff | Hermes-70B | Sycophantic models |
+| **Critic** | Honest assessment, no fluff | Hermes-405B, Hermes-70B | Sycophantic models |
+| **Voice evaluator** | Nuanced literary/voice analysis | Hermes-405B | Models that give generic feedback |
+| **Coding fallback** | Subagent code gen when premium models unavailable | Nemotron-30B, Seed-2.0-mini | Expensive models (waste of budget) |
 
 ## Known Failure Modes
 
 These are patterns we've hit in production. Learn from our scars.
 
+### The Reasoning Content Shell Game (z.ai)
+**Models:** GLM-5.1, GLM-4.7 via z.ai OpenAI-compatible endpoint
+**Symptom:** Response `content` field is empty; actual text is in `reasoning_content`
+**Cause:** z.ai moved GLM output to `reasoning_content` on the OpenAI-compatible path (as of 2026-05-08). Endpoint also changed from `/api/coding/paas/v4` to `/api/coding/paas/v4/chat/completions`.
+**Fix:** Integration code must check both `content` and `reasoning_content`. Fall back to `reasoning_content` if `content` is empty. Or use Anthropic-compatible path (`/api/anthropic/v1/messages`) which doesn't have this issue.
+
 ### The Truncation Trap
 **Models:** DeepSeek v4-flash, occasionally GLM-5.1
 **Symptom:** Agent returns 0 tokens or cuts off mid-sentence
 **Cause:** Output token budget exceeded or context too long
-**Fix:** Keep prompts under 2K tokens for DeepSeek flash. Use for wide/shallow, not deep.
+**Fix:** Keep prompts under 2K tokens for DeepSeek flash. Use for wide/shallow, not deep. ~30% truncation rate is confirmed stable — spawn 30% more agents than needed.
 
 ### The Fabrication Trap
 **Models:** All, but especially creative-mode models
@@ -108,13 +118,15 @@ If you're reading this, you're probably deciding which model to use for a job. H
 
 ```
 Need deep reasoning? → DeepSeek v4-pro (but give it time)
-Need wide parallel? → DeepSeek v4-flash (but expect truncation)
+Need wide parallel? → DeepSeek v4-flash (but expect 30% truncation)
 Need code that compiles? → Seed-2.0-mini or Seed-2.0-code
-Need honest critique? → Hermes-70B in destroyer mode
+Need honest critique? → Hermes-405B (evaluation), Hermes-70B (destroyer mode)
 Need writing quality? → GLM-5.1
 Need a quick check? → DeepSeek flash or Gemma-4-26B
 Budget constrained? → Seed-2.0-mini (cheap, surprisingly good)
 Time constrained? → DeepSeek flash or Seed-2.0-mini
+Need coding subagent fallback? → Nemotron-30B (4/5 technical accuracy)
+Need literary/voice evaluation? → Hermes-405B (4.5/5, resists sycophancy)
 ```
 
 ## Contributing
