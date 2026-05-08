@@ -22,6 +22,9 @@ You're fitting out for a passage. You need crew. You check the manifest.
 | Coding hand when the usual berth is closed | **Nemotron-30B** (DeepInfra dock) | Expensive or unavailable hands |
 | Quick cross-check — sounding two depths | **DeepSeek flash, Gemma-4-26B** | Heavy hands (waste of provisions) |
 | Research synthesis — charting from multiple sources | **Seed-2.0-pro, GLM-5.1** | Hands that invent their own charts |
+| Factual research — real repos, verified URLs | **GLM-5.1** (5/5 honesty, zero fabrication) | DeepSeek flash (invents citations under pressure) |
+| Creative synthesis — what-if, role-play, future scenarios | **DeepSeek v4-flash** (board 5, keep 3-4) | Expensive hands (waste of provisions on speculation) |
+| Reverse-actualization — multi-perspective analysis | **DeepSeek flash × 5 roles** (diversity beats depth) | Any single hand (perspective bias) |
 | Diverse play-testing — running different tacks | **Seed-2.0-mini, Qwen3-235B** | One expensive hand (waste of coin) |
 
 ---
@@ -72,6 +75,51 @@ Both GLM-5.1 and GLM-4.7 hit a silent API change on 2026-05-08:
 - `/api/anthropic/v1/messages` (Anthropic-compatible channel) works normally.
 
 **Lesson learned:** z.ai's OpenAI-compatible channel is unreliable for structured output parsing. The Anthropic path is the only stable waterway.
+
+---
+
+### 2026-05-08 (Evening Watch) — Reverse-Actualization Deep Research Sprint
+
+**12 hands worked this passage.** 3 research agents (GLM-5.1), 5 reverse-actualization role-plays (DeepSeek v4-flash), 1 synthesis (Forgemaster direct). 50+ repos/papers surveyed, 38 search areas, 5 research documents totaling ~100KB.
+
+#### GLM-5.1 — Research Subagent
+
+3 hands boarded for 18-search-area research sweeps each. All 3 completed with verified findings.
+
+**Performance:**
+- Agent 1 (18 areas): 9m32s, 61K tokens (52K in / 9.1K out). Hit Gemini search rate limits after first 3 areas — pivoted to direct URL fetches for verification. Produced 363 lines, 24 verified projects.
+- Agent 2 (10 areas): 6m54s, 64K tokens (56K in / 7.9K out). Same rate limit pattern. Produced 21KB of verified findings.
+- Agent 3 (10 areas): 6m5s, 56K tokens (47K in / 7.5K out). Best hit rate — found ReservoirPy, TorchHD, NVIDIA Warp, MuJoCo Warp, OTT-JAX, Zama Concrete-ML, Microsoft SEAL. Produced 399 lines.
+
+**Seamanship notes:** GLM-5.1 is the best research hand — it doesn't fabricate repos. When search APIs fail, it pivots to direct URL verification instead of making things up. Honest about limitations (annotated rate-limit gaps in output). 3/3 completed — zero washout, unlike DeepSeek flash.
+
+**Captain's rating:** 5/5 for research. The only hand that doesn't invent citations under pressure.
+
+#### DeepSeek v4-flash — Role-Play Subagent (Reverse-Actualization)
+
+5 hands boarded for creative role-play exercises (Theorist, Engineer, Hacker, Skeptic, Synthesist). Each was asked to reverse-actualize from a different future year.
+
+**Performance:**
+- Theorist (2028): 1m33s, 24K tokens. Invented new math objects (Constraint Sheaf Cohomology, D₆-Equivariant Constraint Operad, Holonomy Varieties). Proposed "Arithmetic Constraint Geometry" as a new discipline. Bold but credible.
+- Engineer (2030): 1m13s, 32K tokens. Ruthlessly practical — said only HDC bloom filters shipped from the 50+ surveyed tools. Called regulatory compliance "the real ocean." Identified the FLUX bridge as worst mistake. 18KB of hard-won fake experience.
+- Hacker (2032): ~1m30s, pending completion. Thinking about emergent behaviors, security exploits, and crazy integrations.
+- Skeptic (2028): ~1m, pending. Tearing apart overstated claims.
+- Synthesist (2035): just started. Long-view pattern matching.
+
+**Seamanship notes:** DeepSeek flash is the CHEAPEST creative hand. At $0.01-0.03/query, you can board 5 role-players for less than one GLM-5.1 query. Quality is surprisingly high for creative/synthesis work — it doesn't need to be factual because it's doing *speculative* analysis. The role-play constraints keep it from drifting into generic output.
+
+**New role discovered:** DeepSeek flash as "future scenario planner" — board 5 hands with different year/role constraints, collect divergent visions. The washout rate doesn't matter because you only need 3-4 of 5 to return.
+
+**Captain's rating:** 4/5 for creative synthesis. Not for factual research (use GLM-5.1). Best hand for "what if" exercises.
+
+#### Key Lesson: The Two-Model Research Pattern
+
+For deep research sprints, the winning pattern is:
+1. **GLM-5.1** for factual research (doesn't fabricate, verifies URLs, honest about gaps)
+2. **DeepSeek v4-flash** for creative synthesis (cheap enough to run 5×, good at role-play constraints)
+3. **Forgemaster** (any model) as orchestrator — collects both outputs, runs the integration
+
+This is the "wide crew + deep sounding + captain's judgment" pattern. Don't send one expensive hand to do all three jobs.
 
 ---
 
