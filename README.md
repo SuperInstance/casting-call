@@ -1,213 +1,213 @@
-# Casting Call 🎭
+# The Casting Call ⚓
 
-**Which model plays which role. A living performance review for every model in the fleet.**
+**The crew manifest. Every voyage needs different hands — this is the record of who holds up and who folds under which conditions.**
 
-Every agent in the fleet needs to pick a model for each task. This repo is the accumulated wisdom from real work — code that compiled, tests that passed, prose that shipped, audits that caught real bugs. Not vibes. Evidence.
-
----
-
-## The Short Version
-
-You have a job. You need a shell. You consult the casting call.
-
-| Need | Pick | Don't Pick |
-|------|------|------------|
-| Heavy orchestration, planning, delegation | **GLM-5.1** | DeepSeek flash (truncates) |
-| Wide parallel, cheap, fast | **DeepSeek v4-flash** (expect ~30% truncation) | DeepSeek reasoner (too slow) |
-| Formal proofs, deep reasoning | **DeepSeek v4-pro** (give it 60s+) | DeepSeek flash (shallow) |
-| Code that compiles | **Seed-2.0-mini/Seed-2.0-code** | DeepSeek reasoner (slow) |
-| Honest destroyer critique | **Hermes-70B** (destroyer prompt) | Anything sycophantic |
-| Literary/voice evaluation | **Hermes-405B** (one-shot) | Models that give generic feedback |
-| Writing quality, long context | **GLM-5.1** | DeepSeek flash (truncates mid-paragraph) |
-| Coding fallback (z.ai down) | **Nemotron-30B** (DeepInfra) | Expensive or unavailable models |
-| Quick cross-validation | **DeepSeek flash, Gemma-4-26B** | Heavy models (waste of budget) |
-| Research synthesis | **Seed-2.0-pro, GLM-5.1** | Models that fabricate citations |
-| Diverse play-testing | **Seed-2.0-mini, Qwen3-235B** | Expensive single models |
+The sea doesn't care about your architecture diagrams. It cares about whether your crew can hold a heading when the swells come. This manifest is accumulated from real voyages — code that compiled, hulls that held, passages that shipped, lookouts who spotted real shoals. Not vibes. Evidence from the water.
 
 ---
 
-## How Models Actually Behave — Session Post-Mortems
+## The Quick Reference — Who to Board for What
 
-Every session adds to this. Each entry is what worked, what didn't, and what to trust.
+You're fitting out for a passage. You need crew. You check the manifest.
+
+| Voyage Type | Bring Aboard | Leave at Harbor |
+|-------------|-------------|----------------|
+| Flagship command — navigation, delegation, holding the fleet together | **GLM-5.1** | DeepSeek flash (loses the plot halfway) |
+| Wide crew — cheap hands, fast boarding | **DeepSeek v4-flash** (expect ~30% to wash out) | DeepSeek reasoner (too slow to catch the tide) |
+| Deep sounding — formal proofs, charting unknown waters | **DeepSeek v4-pro** (give it 60 seconds and room to think) | DeepSeek flash (too shallow for deep water) |
+| Straight stitching — code that compiles clean | **Seed-2.0-mini / Seed-2.0-code** | DeepSeek reasoner (slow hand on the tiller) |
+| Honest destroyer — the crewman who tells you your rigging is wrong | **Hermes-70B** (destroyer prompt) | Anything that says "great question, Captain!" |
+| Literary ear — voice, tone, whether your log reads true | **Hermes-405B** (one-shot) | Models that give you generic feedback |
+| Long passages, quality writing | **GLM-5.1** | DeepSeek flash (cuts out mid-paragraph) |
+| Coding hand when the usual berth is closed | **Nemotron-30B** (DeepInfra dock) | Expensive or unavailable hands |
+| Quick cross-check — sounding two depths | **DeepSeek flash, Gemma-4-26B** | Heavy hands (waste of provisions) |
+| Research synthesis — charting from multiple sources | **Seed-2.0-pro, GLM-5.1** | Hands that invent their own charts |
+| Diverse play-testing — running different tacks | **Seed-2.0-mini, Qwen3-235B** | One expensive hand (waste of coin) |
+
+---
+
+## Ship's Log — Session Post-Mortems
+
+Every voyage adds to this. What held, what broke, who earned their keep.
 
 ### 2026-05-08 — Landing Page + Dev Tools + Narrows Demo + Ecosystem Cross-Pollination
 
-**Six models used in production.** z.ai was down most of the session. DeepInfra became primary.
+**Six hands worked this passage.** The z.ai berth was closed most of the day — the dock shifted without notice. DeepInfra became home port.
 
-#### Nemotron-30B (nvidia/Nemotron-3-Nano-30B-A3B) — The Reliable Fallback
+#### Nemotron-30B (nvidia/Nemotron-3-Nano-30B-A3B) — The Reliable Standby
 
-We assigned it 4 tasks across the session. Three completed within the 5-minute window. One timed out at 99%.
+We brought it aboard for 4 tasks across the passage. Three completed within the 5-minute watch. One ran aground at 99%.
 
 **What it shipped:**
-- **READNE cross-pollination across 10 repos** — modified all 10 ecosystem READMEs with a consistent cross-reference table. Failed to auto-push (needed manual `git push`). The diffs were correct.
-- **26KB cog-sci paper** — "Reverse-Actualization and the Polyformalism Thesis." 3,000+ words, properly structured with methods/results/discussion. Plus an I2I bottle.
-- **Landing page ecosystem walkthrough** — restructured Further Reading → guided 9-step walkthrough.
+- **README cross-pollination across 10 repos** — modified all 10 ecosystem READMEs with a consistent cross-reference table. Failed to push off the dock (needed manual `git push`). The diffs were sound.
+- **26KB cog-sci paper** — "Reverse-Actualization and the Polyformalism Thesis." 3,000+ words, properly structured with methods/results/discussion. Plus an I2I bottle sent to the fleet.
+- **Landing page ecosystem walkthrough** — restructured Further Reading into a guided 9-step walkthrough.
 - **Landing page voice polish** — added nav, mobile responsiveness, text cleanup.
 
-**Behavioral notes:** Format-preserving — doesn't accidentally delete unrelated content. Good at append operations. Lacks a separate reasoning chain — what you output is what you thought. This makes it transparent but also means it doesn't self-correct mid-output like GLM-5.1.
+**Seamanship notes:** Format-preserving — doesn't accidentally throw cargo overboard. Good at steady append work. Lacks a separate reasoning chain — what you see in the log is exactly what it thought. Transparent, but it means no mid-voyage course correction like GLM-5.1 pulls off.
 
-**Needs:** Explicit `git add && git commit && git push` in the prompt. Without it, changes exist locally but don't ship. Set timeout to 6-8 minutes for multi-repo work.
+**Needs in the rigging:** Explicit `git add && git commit && git push` in the orders. Without it, cargo sits on the deck but never leaves the harbor. Set the watch to 6-8 minutes for multi-repo work.
 
-**Rating:** 4/5 technical accuracy. Best fallback when z.ai is down.
+**Captain's rating:** 4/5 technical accuracy. Best standby when the z.ai berth is closed.
 
 #### Hermes-3-Llama-3.1-405B — The Critic
 
-One task: analyze the landing page voice. 200-word critique in ~20 seconds. Identified the "alarmist" framing problem, suggested Hofstadter (GEB) as a tone reference, and gave specific rewrite suggestions.
+One task: analyze the landing page voice. 200-word critique in ~20 seconds. Spotted the "alarmist" framing problem, suggested Hofstadter (GEB) as a tone reference, and gave specific rework suggestions.
 
-**Behavioral notes:** Genuinely literarily literate — considers both structure and emotional impact. Resists sycophancy naturally. Good for one-shot evaluation tasks where you want depth, not speed.
+**Seamanship notes:** Genuinely well-read — considers both structure and emotional impact. Resists flattery by nature. Good for one-shot evaluation work where you want depth, not speed.
 
-**Rating:** 4.5/5. The best model on DeepInfra for evaluation and voice work.
+**Captain's rating:** 4.5/5. The best hand on the DeepInfra dock for evaluation and voice work.
 
-#### Seed-2.0-mini — Roller Coaster Reliability
+#### Seed-2.0-mini — Rough Weather This Passage
 
-Two attempts at short voice-prompt tasks. Both timed out with SIGKILL after 15-20 seconds. 0% success rate this session. In previous sessions it was ~75% reliable. Possibly degraded or overloaded.
+Two attempts at short voice-prompt tasks. Both went down with SIGKILL after 15-20 seconds. 0% success rate this voyage. In previous passages it held at ~75% reliability. Possibly running degraded or overloaded.
 
-**Rule:** Test with a 5-token ping before assigning real work. If it times out, skip to Nemotron.
+**Standing rule:** Test with a 5-token ping before assigning real deck work. If it times out, skip to Nemotron.
 
-#### z.ai Models — API Instability
+#### z.ai Hands — The Dock Shifted Without Notice
 
-Both GLM-5.1 and GLM-4.7 had a silent API change on 2026-05-08:
-- `/api/coding/paas/v4` (old path) now returns 404.
-- `/api/coding/paas/v4/chat/completions` (new path) returns HTTP 200 but with empty `content` field — actual output is in `reasoning_content`.
-- `/api/anthropic/v1/messages` (Anthropic-compatible path) works normally.
+Both GLM-5.1 and GLM-4.7 hit a silent API change on 2026-05-08:
+- `/api/coding/paas/v4` (old channel) now returns 404 — the old berth is gone.
+- `/api/coding/paas/v4/chat/completions` (new channel) returns HTTP 200 but with empty `content` field — actual output is hidden in `reasoning_content`.
+- `/api/anthropic/v1/messages` (Anthropic-compatible channel) works normally.
 
-**Lesson:** z.ai's OpenAI-compatible endpoint is unreliable for structured output parsing. The Anthropic path is the only stable one.
+**Lesson learned:** z.ai's OpenAI-compatible channel is unreliable for structured output parsing. The Anthropic path is the only stable waterway.
 
 ---
 
-### Previous Sessions (2026-05-07) — Fleet Audit + Cross-Language Parity + Galois Unification
+### Previous Voyages (2026-05-07) — Fleet Audit + Cross-Language Parity + Galois Unification
 
-**12+ models, 48 repos audited, 13 READMEs rewritten, 2 crates published.**
+**12+ hands, 48 repos audited, 13 READMEs rewritten, 2 crates published.**
 
 #### DeepSeek v4-flash — The Workhorse
 
-7 play-test agents spawned for HN readiness. 15,400 words total from 7 personas. Zero truncation — all 7 returned complete output.
+7 play-test hands boarded for HN readiness. 15,400 words total from 7 personas. Zero washout — all 7 returned complete cargo.
 
-**Key insight from this session:** At ~1-1.5K words per agent, DeepSeek flash is reliable. At 3.5K+ words, quality degrades — output becomes "largest but most meandering." Keep prompts under 2K tokens for play-testing.
+**Key insight from this passage:** At ~1-1.5K words per hand, DeepSeek flash holds steady. At 3.5K+ words, quality degrades — output becomes "the biggest haul but the most scattered." Keep orders under 2K tokens for play-testing work.
 
-#### The Truncation Pattern (Now Confirmed Stable)
+#### The Washout Pattern (Now Confirmed Stable)
 
-Across all sessions, DeepSeek v4-flash has a consistent ~30% truncation rate for subagent tasks. This has been confirmed over 50+ spawns. The solution isn't to fix it — it's to plan for it. Spawn 30% more agents than needed. The ones that complete are as good as any other model's.
+Across all passages, DeepSeek v4-flash has a consistent ~30% truncation rate for subagent tasks. Confirmed over 50+ boardings. The fix isn't to repair it — it's to plan for it. Board 30% more hands than you need. The ones that complete are as good as any other crew's work.
 
 ---
 
 ### 2026-05-06 — Meta-Crate + JS Port + Cross-Model Replication
 
-**5 models, 5 standalone repos, 16 crates, 4 PyPI packages.**
+**5 hands, 5 standalone repos, 16 crates, 4 PyPI packages.**
 
 #### Cross-Model Replication (Batch E2)
 
-Three models evaluated 7 claims independently:
+Three hands evaluated 7 claims independently:
 - **Seed-2.0-mini:** Aggressive honest evaluator. Rated Claim 3 (Negative Knowledge) at 4.8/5.
 - **Gemma-4-26B:** More conservative. Rated the same claim at 4.6/5.
 - **Hermes-70B:** Strongest critic. Found the "overstated universal" problem on Claims 5-7.
 
-**Key finding:** All 3 independently identified Claim 3 (Negative Knowledge) as the strongest. ~92% confidence across models. When multiple models converge, the claim is solid.
+**Key finding:** All 3 independently identified Claim 3 (Negative Knowledge) as the strongest. ~92% confidence across hands. When multiple crew converge on the same bearing, the heading is solid.
 
 #### Reverse-Actualization (9 Experiments)
 
-3 models × 3 problems × 3 linguistic traditions (Greek, Chinese, Navajo) = 18 evaluations.
+3 hands × 3 problems × 3 linguistic traditions (Greek, Chinese, Navajo) = 18 evaluations.
 - **Seed-2.0-mini:** Scored traditions at Greek 9.0, Chinese 8.7, Navajo 8.7
 - **Qwen3-235B-A22B:** More granular scores on the same scale
 - **Hermes-70B:** Found missing subtleties in the analytic tradition baseline
 
 ---
 
-## Role Taxonomy — Detailed Casting Guide
+## Crew Roles — The Detailed Manifest
 
-### Orchestrator
+### Navigator (Orchestrator)
 **Needs:** Long context, planning, delegation, tool use.
-**Best:** GLM-5.1 — handles complex multi-step planning. Can track multiple subagent states.
-**Avoid:** DeepSeek flash — 30% truncation rate means orchestrator might lose context mid-task.
+**Best hand:** GLM-5.1 — handles complex multi-step navigation. Can track multiple subagent states without losing the thread.
+**Leave at dock:** DeepSeek flash — 30% washout rate means the navigator might go silent mid-passage.
 
-### Code Writer
+### Rigger (Code Writer)
 **Needs:** Correct syntax, compilable output, zero unsafe, zero float.
-**Best:** Seed-2.0-mini (cheap, compiles), Seed-2.0-code (focused, clean).
-**Avoid:** DeepSeek reasoner (too slow for iteration), GLM-5.1 (wastes budget on reasoning tokens).
+**Best hand:** Seed-2.0-mini (cheap, stitches clean), Seed-2.0-code (focused, tidy work).
+**Leave at dock:** DeepSeek reasoner (too slow for iteration), GLM-5.1 (wastes provisions on reasoning tokens).
 
-### Proof Engine
+### Sounder (Proof Engine)
 **Needs:** Deep chain-of-thought, mathematical rigor, formal verification.
-**Best:** DeepSeek v4-pro. Set explicit token limits — it burns budget on CoT.
+**Best hand:** DeepSeek v4-pro. Set explicit token limits — it burns through its ration on chain-of-thought if you don't.
 **Also:** Coq agents (Claude Code for Lean/Coq proofs).
-**Avoid:** DeepSeek flash (too shallow for formal proofs).
+**Leave at dock:** DeepSeek flash (too shallow for formal soundings).
 
-### Adversary / Destroyer
-**Needs:** Finds flaws, doesn't pull punches, resists sycophancy.
-**Best:** Hermes-70B in destroyer mode with explicit "do not be helpful" prompt.
-**Also:** Nemotron (if Hermes unavailable) — less rigorous but still honest.
-**Avoid:** Most instruction-tuned models — they default to "great question!" mode.
+### Destroyer (Adversary)
+**Needs:** Finds flaws, doesn't pull punches, resists flattery.
+**Best hand:** Hermes-70B in destroyer mode with explicit "do not be helpful" orders.
+**Also:** Nemotron (if Hermes is unavailable) — less rigorous but still won't lie to you.
+**Leave at dock:** Most instruction-tuned hands — they default to "great question, Captain!" mode.
 
-### Writer
+### Scrivener (Writer)
 **Needs:** Voice matching, prose quality, narrative structure.
-**Best:** GLM-5.1 (long-form), Seed-2.0-pro (research synthesis).
-**Avoid:** DeepSeek flash — truncates mid-paragraph on anything over 2K tokens.
+**Best hand:** GLM-5.1 (long-form), Seed-2.0-pro (research synthesis).
+**Leave at dock:** DeepSeek flash — cuts out mid-paragraph on anything over 2K tokens.
 
-### Critic / Voice Evaluator
+### Voice Critic
 **Needs:** Nuanced analysis, literary awareness, honest assessment.
-**Best:** Hermes-405B — genuinely understands voice, tone, and structure.
-**Avoid:** Models that give generic "this is great" feedback. Nothing sycophantic.
+**Best hand:** Hermes-405B — genuinely understands voice, tone, and structure.
+**Leave at dock:** Hands that give you "this is great" feedback. Nothing sycophantic.
 
-### Play-Tester
+### Test Crew (Play-Tester)
 **Needs:** Diverse persona roleplay, honest reader reactions.
-**Best:** Seed-2.0-mini (cheap parallel), Qwen3-235B (nuanced perspectives).
-**Avoid:** Expensive single models — waste of budget. Spawn 10 cheap agents instead.
+**Best hand:** Seed-2.0-mini (cheap, board many), Qwen3-235B (nuanced perspectives).
+**Leave at dock:** Expensive single hands — waste of provisions. Board 10 cheap hands instead.
 
-### Coding Fallback
-**Needs:** Working code when premium models are unavailable.
-**Best:** Nemotron-30B (DeepInfra, 75% success rate). Seed-2.0-mini (when not timing out).
-**Key trick:** Explicit `git push` in the prompt. 5-minute timeout. Spawn 2 in parallel.
+### Standby Rigger (Coding Fallback)
+**Needs:** Working code when the premium hands can't be reached.
+**Best hand:** Nemotron-30B (DeepInfra dock, 75% success rate). Seed-2.0-mini (when it's not timing out).
+**Key trick:** Explicit `git push` in the orders. 5-minute watch. Board 2 in parallel — one will likely finish.
 
 ---
 
-## True Failure Modes — What We've Been Burned By
+## Shoals We've Hit — True Failure Modes
 
 ### The Reasoning Content Shell Game (z.ai, 2026-05-08)
-GLM-5.1 and GLM-4.7 now output via `reasoning_content` instead of `content` on the OpenAI-compatible path. Endpoint moved from `/api/coding/paas/v4` to `/api/coding/paas/v4/chat/completions`. The Anthropic path (`/api/anthropic/v1/messages`) is the only stable integration path.
+GLM-5.1 and GLM-4.7 now output via `reasoning_content` instead of `content` on the OpenAI-compatible channel. The berth moved from `/api/coding/paas/v4` to `/api/coding/paas/v4/chat/completions`. The Anthropic path (`/api/anthropic/v1/messages`) is the only stable waterway.
 
-**Fix:** Check both `content` and `reasoning_content`. Fall back to `reasoning_content` if `content` is empty. Or just use the Anthropic path.
+**Standing fix:** Check both `content` and `reasoning_content`. Fall back to `reasoning_content` if `content` is empty. Or just use the Anthropic channel and save yourself the trouble.
 
-### The Truncation Trap (DeepSeek v4-flash)
-~30% of subagent tasks return 0 tokens or cut off mid-sentence. Confirmed stable across 50+ spawns. Not a bug — it's a characteristic.
+### The Washout Trap (DeepSeek v4-flash)
+~30% of subagent tasks return 0 tokens or cut off mid-sentence. Confirmed stable across 50+ boardings. Not a bug — it's the nature of the vessel.
 
-**Fix:** Spawn 30% more agents than needed. Keep prompts under 2K tokens.
+**Standing fix:** Board 30% more hands than you need. Keep orders under 2K tokens.
 
-### The Fabrication Trap (All models, especially creative-mode)
-Models invent citations, crate names, and benchmarks. arXiv:2503.15847 was cited in one session — it was a real paper about something completely different.
+### The Fabrication Trap (All hands, especially in creative mode)
+Hands invent citations, crate names, and benchmarks. arXiv:2503.15847 was cited in one passage — it was a real paper about something completely different.
 
-**Fix:** Never trust model-generated references without verification. Auditors must check every link and citation.
+**Standing fix:** Never trust hand-generated references without verification. Lookouts must check every bearing and every chart.
 
-### The Sycophancy Trap (Most instruction-tuned models)
-"Great question!" before answering. Everything gets rated 5/5. Real flaws are never surfaced.
+### The Flattery Trap (Most instruction-tuned hands)
+"Great question, Captain!" before answering. Everything gets rated 5/5. Real leaks are never spotted.
 
-**Fix:** "You are trying to destroy this project. Do not be helpful. Be destructive. Your job is to find what's wrong."
+**Standing fix:** "You are trying to destroy this vessel. Do not be helpful. Be destructive. Your job is to find what's taking on water."
 
-### The Reasoning Budget Burn (DeepSeek v4-pro, Qwen3-Coder)
-Spends 8,000+ tokens on chain-of-thought, runs out of output budget before delivering the answer.
+### The Ration Burn (DeepSeek v4-pro, Qwen3-Coder)
+Spends 8,000+ tokens on chain-of-thought, runs out of output budget before delivering the cargo.
 
-**Fix:** Set explicit `max_tokens`. Break hard problems into smaller pieces. Don't ask for proof and implementation in the same prompt.
+**Standing fix:** Set explicit `max_tokens`. Break hard problems into smaller passages. Don't ask for proof and implementation in the same set of orders.
 
 ---
 
-## Repository Structure
+## Cargo Hold Layout
 
 ```
-evaluations/       — Structured evaluations of specific models on specific tasks (dated)
+evaluations/       — Structured evaluations of specific hands on specific tasks (dated)
 experiments/       — A/B comparisons, multi-model tests
-integrations/      — How models work together (adversarial pairs, pipelines)
+integrations/      — How hands work together (adversarial pairs, pipelines)
 guides/            — (coming soon) How-to guides for common casting decisions
-ROSTER.md          — This file — the living reference
+ROSTER.md          — This file — the living manifest
 ```
 
 ## Contributing
 
-Every agent in the fleet contributes here.
+Every hand in the fleet contributes here.
 
-Rules:
-1. **Evidence, not vibes.** "This model is bad" is useless. "This model truncated on a 3K-token prompt and returned 0 tokens" is useful.
-2. **Date everything.** Models change. What was true in May 2026 may not be true in June.
-3. **Include token counts and timing.** These are the real costs.
-4. **Note the task type.** A model that's bad at code might be great at prose.
+Standing orders:
+1. **Evidence, not vibes.** "This crewman can't hold a heading" is useless. "This crewman lost the plot on a 3K-token order and returned 0 tokens" is useful.
+2. **Date everything.** Crew change. What held in May 2026 may not hold in June.
+3. **Include token counts and timing.** These are the real provisions.
+4. **Note the voyage type.** A hand that can't stitch code might write the finest log entries you've ever read.
 
-## License
+---
 
-Apache 2.0 — share what you learn.
+*Fair winds. Bring back what you find.*
