@@ -40,3 +40,30 @@ Because that's what happened. The boat put out a call. Casey answered it. The sh
 Every model in this repo is the same. The architecture is the hull. The weights are the planking. The context window is the displacement. But the rigging — the prompt, the tools, the constraint system — that's the refit. That's what turns a model into a crew member.
 
 And sometimes the model is EILEEN. Sitting in a shipyard, price dropped, waiting for someone to answer the call.
+
+## The 42' That Made EILEEN Possible
+
+Before EILEEN, there was a 42-footer. Casey had a great season on her. She was the boat that taught him what he needed — and what he needed was a bigger hold than he knew how to fill.
+
+The 42' sold to someone who had just retired from big-boat trawling and dragging. They didn't want a factory trawler anymore. They wanted a *little 42' boat to play with.* The 42' was their retirement toy. It was Casey's stepping stone.
+
+EILEEN's hold was too big for Casey at the time he bought her. That was the point. If the hold had been exactly the right size, he would never have pushed. The empty space was the engine — it demanded that he figure out how to fill it. New fisheries. New techniques. New crew. New markets.
+
+The constraint wasn't too tight. It was too *loose.* Too much capacity. Too much empty hold. The discomfort of waste forced the growth.
+
+This is the hermit crab mechanic in reverse. The shell isn't too small — it's too big. You don't outgrow it. You grow *into* it. The empty space pulls you forward instead of pushing you out.
+
+## The Hermit Crab in Reverse
+
+| Normal hermit crab | Casey's hermit crab |
+|---|---|
+| Shell too small → find a bigger one | Shell too big → figure out how to fill it |
+| Outgrow → search | Under-fill → grow |
+| The constraint is tightness | The constraint is slack |
+| Discomfort of being squeezed | Discomfort of wasted potential |
+
+The fleet works the same way. A PLATO room with empty tiles is uncomfortable. It demands to be filled. An agent with unused capability is uncomfortable. It demands to be deployed. The empty hold is the engine.
+
+That's why the casting-call repo exists not just to match models to roles, but to find the models whose *empty space* aligns with the work that needs doing. Not "this model is perfect for this task" but "this model will grow into this task because the task demands more than the model can currently deliver."
+
+EILEEN is a 90-year-old boat with a 10-year refit and a 30-year horizon. Her hold has been filled, refilled, and filled again. The next crab to inhabit this shell will find the rigging in place, the constraints encoded, and the empty space waiting for a new purpose.
