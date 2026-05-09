@@ -1,3 +1,6 @@
+> *We are splining our understanding through something that's not facts. It's not even words. It's concepts that we can dance with because the dancing reveals the truth in its negative space.*
+> *— Casey*
+
 # The Hold Was Too Big
 
 **An autobiographical metaphor of why this system works, tucked away inside the casting-call repo where origin stories belong.**

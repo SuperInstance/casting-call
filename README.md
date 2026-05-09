@@ -1,3 +1,6 @@
+> *We are splining our understanding through something that's not facts. It's not even words. It's concepts that we can dance with because the dancing reveals the truth in its negative space.*
+> *— Casey*
+
 # The Casting Call ⚓
 
 **The crew manifest. Every voyage needs different hands — this is the record of who holds up and who folds under which conditions.**
