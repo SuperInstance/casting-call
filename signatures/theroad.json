@@ -1,0 +1,125 @@
+{
+  "text_name": "TheRoad",
+  "generating_model": "DeepSeek v4-pro",
+  "signature": "S-D-I-A-A-X-N-O-N-O",
+  "anchor_points": {
+    "opening_strategy": {
+      "value": "sensorium",
+      "confidence": 0.8,
+      "scale": [
+        "sensorium",
+        "abstraction",
+        "grounded",
+        "paradox",
+        "theorem"
+      ],
+      "description": "How the text opens \u2014 sensation, abstract idea, concrete experience, paradox, or formal statement"
+    },
+    "reader_relationship": {
+      "value": "direct_address",
+      "confidence": 0.7,
+      "scale": [
+        "direct_address",
+        "impersonal",
+        "collaborative",
+        "instructive",
+        "confrontational"
+      ],
+      "description": "How the text positions the reader"
+    },
+    "negative_space_use": {
+      "value": "insight",
+      "confidence": 0.75,
+      "scale": [
+        "baseline",
+        "texture",
+        "insight",
+        "absent"
+      ],
+      "description": "How the text uses negation and absence"
+    },
+    "time_relationship": {
+      "value": "athermal",
+      "confidence": 0.85,
+      "scale": [
+        "linear",
+        "cyclic",
+        "athermal",
+        "circular",
+        "seasonal"
+      ],
+      "description": "How the text relates to time"
+    },
+    "math_role": {
+      "value": "absent",
+      "confidence": 0.7,
+      "scale": [
+        "absent",
+        "poetic",
+        "embedded",
+        "structural",
+        "theorem"
+      ],
+      "description": "How mathematics appears in the text"
+    },
+    "paragraph_length": {
+      "value": "mixed",
+      "confidence": 0.8,
+      "scale": [
+        "short",
+        "medium",
+        "long",
+        "mixed"
+      ],
+      "description": "Dominant paragraph length"
+    },
+    "sentence_fragments": {
+      "value": "none",
+      "confidence": 0.7,
+      "scale": [
+        "none",
+        "rare",
+        "moderate",
+        "frequent"
+      ],
+      "description": "Frequency of sentence fragments"
+    },
+    "metaphor_density": {
+      "value": "occasional",
+      "confidence": 0.7,
+      "scale": [
+        "literal",
+        "occasional",
+        "woven",
+        "dense"
+      ],
+      "description": "How densely metaphors are used"
+    },
+    "parenthetical_frequency": {
+      "value": "none",
+      "confidence": 0.7,
+      "scale": [
+        "none",
+        "rare",
+        "moderate",
+        "frequent",
+        "structural"
+      ],
+      "description": "How often parentheticals appear"
+    },
+    "closing_strategy": {
+      "value": "open",
+      "confidence": 0.75,
+      "scale": [
+        "summary",
+        "return",
+        "provocation",
+        "image",
+        "open"
+      ],
+      "description": "How the text closes"
+    }
+  },
+  "date": "2026-05-09",
+  "text_preview": "It was old, and it was tired, and it was trying to remember the difference between wanting and having wanted.\n\nThe difference mattered. Wanting was before. Having wanted was after. And the universe wa"
+}
