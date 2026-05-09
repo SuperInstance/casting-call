@@ -262,3 +262,9 @@ Standing orders:
 ---
 
 *Fair winds. Bring back what you find.*
+
+## Tools
+
+- **Voice Signature Analyzer** — `https://superinstance.github.io/voice-signature-tool/` — paste text, get voice signature, see model matches
+- **Casting-Call MCP** — `github.com/SuperInstance/casting-call-mcp` — MCP server for model recommendations
+- **Casting-Call GPU** — `github.com/SuperInstance/casting-call-gpu` — GPU-accelerated signature engine
