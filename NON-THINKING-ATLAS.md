@@ -359,3 +359,54 @@ Don't measure `mean(accuracy across depths)`. Measure `critical_angle` — the l
 | Qwen-0.8B | 3 | ~1 (estimated) |
 
 **The critical angle IS the draft.** Below it, the water is transparent. Above it, total reflection. Navigation is binary: you can see through, or you can't.
+
+---
+
+## Phase Transitions Are Universal (2026-05-15)
+
+> *Not just arithmetic. Syllogisms, code tracing, analogies — all show sharp phase boundaries.*
+
+### Evidence
+
+```
+SYLLOGISM DEPTH (chain of transitive reasoning):
+  seed-mini:   ✓✓✓✗✓  PHASE TRANSITION at d4
+  gemini-lite: ✓✓✓✓✓  NO TRANSITION through d5
+  hermes-70b:  ✓✓✗✓✓  PHASE TRANSITION at d3
+
+CODE TRACE DEPTH (variable assignment chains):
+  seed-mini:   ✓✓✓✓✓✓  NO TRANSITION through d6
+  gemini-lite: ✓✓✓✓✓✓  NO TRANSITION through d6
+  hermes-70b:  ✓✓✗✓✗✓  PHASE TRANSITION at d3
+
+ANALOGY DEPTH (chained analogical reasoning):
+  seed-mini:   ✓✗✓✓✓  PHASE TRANSITION at d2 (!)
+  gemini-lite: ✓✓✓✓✓  NO TRANSITION through d5
+  hermes-70b:  ✓✓✓✓✓  NO TRANSITION through d5
+```
+
+### The Implication
+
+**Different models dominate different cognitive domains.** Seed-mini dominates arithmetic but gemini-lite dominates syllogisms and analogies. Hermes fails at depth 3 on arithmetic AND syllogisms AND code, but has no trouble with analogies.
+
+This means the fleet router needs **domain-aware routing**, not just axis-aware routing. A query that's "arithmetic at depth 7" routes to seed-mini. A query that's "analogical reasoning at depth 4" routes to gemini-lite. Same depth, different model.
+
+### Revised Model Profiles
+
+| Domain | seed-mini | gemini-lite | hermes-70b |
+|--------|-----------|-------------|------------|
+| Addition | ∞ | 25 | 10 |
+| Multiplication | ∞ | 9 | 5 |
+| Nesting | ∞ | 5 | 3 |
+| Syllogism | 4 | ∞ | 3 |
+| Code trace | ∞ | ∞ | 3 |
+| Analogy | 2 | ∞ | ∞ |
+| Coefficient | 4 | 3 | 2 |
+
+**Seed-mini**: arithmetic specialist (4/6 arithmetic axes are ∞)
+**Gemini-lite**: reasoning specialist (3/3 reasoning axes are ∞)
+**Hermes-70b**: shallow across the board (max depth 5 on multiplication)
+
+### F22: Domain-Dependent Critical Angles
+
+The critical angle is not a model property. It's a model×domain property. Each model has a different critical angle for each cognitive domain. Fleet routing must be two-dimensional: model × domain → critical angle.
