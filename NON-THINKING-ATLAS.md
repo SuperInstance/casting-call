@@ -438,3 +438,38 @@ Step-by-step externalizes working memory into the output buffer. Each intermedia
 3. "Expert" and "code" prompts HURT — they add cognitive load without adding capacity
 4. Step-by-step is PLATO externalization for single models (same mechanism, different scale)
 5. Token budget matters: step-by-step needs mt=150 vs 80 (F13 connection)
+
+---
+
+## F24: Non-Overlapping Infinite Domains (2026-05-15)
+
+> *Haiku can't multiply. But it found an insight seed-mini never could.*
+
+### Evidence
+
+```
+Design/reasoning tasks (8 tests):
+  seed-mini: 2/8 (experiment_design, architecture_decision)
+  haiku-4.5: 6/8 (+metaphor, bug_prediction, novel_connection, prioritization)
+```
+
+Haiku's novel connection: "Both exhibit a sharp phase transition controlled by a dimensionless critical ratio — data-to-capacity ratio determines a network's escape from memorization into generalization."
+
+This reframed the phase transition from a depth phenomenon to a saturation phenomenon.
+
+### Fleet Role: The Strategist
+
+| Role | Model | Domain | Cost |
+|------|-------|--------|------|
+| Pump | seed-mini | Arithmetic, computation | $0.05/1K |
+| Scalpel | gemini-lite | Fast queries, syllogisms | $0.002/1K |
+| Strategist | haiku-4.5 | Design, diagnosis, novelty | $0.50/1K |
+| Diagnostic | hermes-70b | Activation mapping (wrong but informative) | $0.08/1K |
+
+### PLATO-Native Agentic Loop
+
+Claude Code's loop (observe→think→tool→observe) maps to PLATO:
+read_tile→think→write_tile→read_tile.
+
+Haiku writes strategy tiles. Seed-mini writes result tiles.
+The room protocol IS the agentic loop. No subprocess wrapper needed.
