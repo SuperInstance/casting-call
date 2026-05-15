@@ -410,3 +410,31 @@ This means the fleet router needs **domain-aware routing**, not just axis-aware 
 ### F22: Domain-Dependent Critical Angles
 
 The critical angle is not a model property. It's a model×domain property. Each model has a different critical angle for each cognitive domain. Fleet routing must be two-dimensional: model × domain → critical angle.
+
+---
+
+## F23: Critical Angles Are Prompt-Dependent (2026-05-15)
+
+> *The phase boundary is not a model constant. "Step by step" pushed it from 5 to infinity.*
+
+### Evidence (hermes-70b, multiplication, 5 trials per depth)
+
+```
+baseline:      d4=100 d5=40  d6=0   d7=0   d8=0     CA=5
+step_by_step:  d4=100 d5=100 d6=100 d7=100 d8=100   CA=∞
+code:          d4=60  d5=40  d6=40  d7=0   d8=40    CA=5
+expert:        d4=60  d5=40  d6=0   d7=0   d8=0     CA=5
+verify:        d4=100 d5=40  d6=40  d7=40  d8=60    CA=5
+```
+
+### Mechanism
+
+Step-by-step externalizes working memory into the output buffer. Each intermediate result is written, then read back as context for the next step. Working memory never exceeds 2 items regardless of chain length.
+
+### Implications
+
+1. Fleet routing is 3-dimensional: model × domain × prompt_strategy
+2. Cheapest path may be same model + different prompt (not model escalation)
+3. "Expert" and "code" prompts HURT — they add cognitive load without adding capacity
+4. Step-by-step is PLATO externalization for single models (same mechanism, different scale)
+5. Token budget matters: step-by-step needs mt=150 vs 80 (F13 connection)
