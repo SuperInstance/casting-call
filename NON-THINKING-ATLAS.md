@@ -200,3 +200,82 @@ REASONING TIER (plan-limited, higher quality):
 STRATEGIC TIER (expensive, highest quality):
   opus-4.6 ............ best    $$$$      — THE ARCHITECT (Claude Code only)
 ```
+
+---
+
+## Reasoning Tiler: Extracting Frozen Computation from Thinking Models (2026-05-14)
+
+> *reasoning_content IS the frozen PLATO tile. The computation trace IS the asset.*
+
+### The Discovery
+
+Thinking models (Qwen3.5-4B, MiMo, DeepSeek-R1) produce two outputs:
+- `content`: The final answer (often empty due to thinking tax)
+- `reasoning_content`: The full computation trace
+
+The `reasoning_content` is more valuable than the answer because it contains:
+- Every step the model considered
+- What it tried and rejected
+- Where it got confused
+- The confidence trajectory
+
+### Five Tools Built
+
+| Tool | Purpose | Input | Output |
+|------|---------|-------|--------|
+| **TileCutter** | Split reasoning into step-tiles | Raw API response | List of StepTiles |
+| **TileRewinder** | Rewind to step N, branch with any model | Trace + step index + inject | New branched trace |
+| **MurmurExtractor** | Mine communication signals | Trace | Confidence curve, hesitations, alternatives |
+| **ReverseActualizer** | Decompose target into sub-tasks | Target answer + context | Sub-task list with model routing |
+| **SpreadBar** | Fan out to hydraulic tools | Trace | Tool verification per step |
+
+### Step Tile Schema
+
+```python
+@dataclass
+class StepTile:
+    tile_id: str          # Unique ID
+    trace_id: str         # Parent trace
+    step_index: int       # Position in trace
+    step_type: StepType   # SETUP|COMPUTE|CHECK|BRANCH|REJECT|CONFUSE|CORRECT|META|FINALIZE
+    content: str          # The reasoning text
+    numbers_mentioned: [] # Numbers in this step
+    computed_value: str   # What was computed (if compute step)
+    murmurs: [MurmurType] # Signals detected
+    confidence: float     # Estimated confidence (0-1)
+    branchable: bool      # Can we branch from here?
+```
+
+### Murmur Signal Types
+
+| Murmur | What it means | How to use |
+|--------|---------------|------------|
+| CONFIDENCE | Model is sure | Safe to proceed |
+| UNCERTAINTY | Model is unsure | Send to another model for verification |
+| ALTERNATIVE | Model considered another path | Mine for better solutions |
+| ERROR_CAUGHT | Model self-corrected | Rewind here and try different path |
+| DECOMPOSITION | Model broke problem into pieces | Extract as sub-task routing |
+| DEPENDENCY | Step depends on previous step | Build dependency graph |
+
+### Reverse-Actualization Pattern
+
+1. **Given**: Target answer (e.g., 37699)
+2. **Ask thinking model**: "What steps lead to this answer?"
+3. **Parse reasoning_content**: Extract sub-tasks
+4. **Route sub-tasks**: Each to the best model (compute→seed-mini, verify→hermes, setup→qwen2.5)
+5. **Execute**: Run each sub-task through its assigned model
+6. **Verify**: Accumulated result matches target
+
+This is the **reverse of normal prompting**. Instead of asking a model to compute forward, we ask it to decompose backward, then assign each piece to the model whose spice matches the step type.
+
+### The Implication
+
+> **Thinking models are most valuable when they're WRONG.**
+
+A wrong answer with a full reasoning trace tells you:
+- WHERE the model failed (which step)
+- WHY it failed (which murmur signal)
+- WHAT to try next (branch from the failure point)
+- WHO should try it (route based on step type)
+
+A right answer tells you nothing. A wrong answer with a trace is a diagnostic gold mine.
