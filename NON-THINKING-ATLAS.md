@@ -279,3 +279,35 @@ A wrong answer with a full reasoning trace tells you:
 - WHO should try it (route based on step type)
 
 A right answer tells you nothing. A wrong answer with a trace is a diagnostic gold mine.
+
+---
+
+## The Imaging Stack (2026-05-14)
+
+> *One model = a reading from the surface. The fleet = sonar from multiple angles. The tower = the seiner's vantage point.*
+
+### Four Layers of Observation
+
+| Layer | Tool | What it sees | Analogy |
+|-------|------|-------------|---------|
+| **Surface** | seed_tools.py | One model's answer | Reading the water from the boat deck |
+| **Stereo** | stereo_reconstruction.py | Interference between two models | Two ears locating a sound source |
+| **fMRI** | functional_imaging.py | Activation topology across models | Brain scan — what lit up, what didn't |
+| **Tower** | tuna_tower.py | Problem structure above the reflection | Seiner's tower — see through the glare |
+
+### The Fresnel Insight
+
+Small models (seed-mini) are calm water. Low activation, high clarity. You see straight through to the answer.
+
+Large models (hermes-70b) can be choppy — high activation (93%!) but wrong. All that cognitive work is surface glare reflecting the model's own computation back at itself.
+
+The tower reveals: **the problem is simple when the calm models prove it.** If seed-mini says 19 and gemini-lite says 19 through crystal-clear water, hermes saying 31 isn't a disagreement about the problem — it's hermes fighting its own reflection.
+
+### Bottom Topology Types
+
+| Type | Depth | Meaning | Action |
+|------|-------|---------|--------|
+| **Plateau** | 0.0 | All models navigate | Full speed ahead |
+| **Slope** | 0.2 | Some models crash | Trust the calm models, navigate around the choppy |
+| **Ridge** | 0.5 | Most models crash | Only use models with proven depth here |
+| **Canyon** | 1.0 | All models crash | Send a diver (decomposition, bigger model) |
