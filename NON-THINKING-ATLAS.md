@@ -473,3 +473,43 @@ read_tile→think→write_tile→read_tile.
 
 Haiku writes strategy tiles. Seed-mini writes result tiles.
 The room protocol IS the agentic loop. No subprocess wrapper needed.
+
+---
+
+## F25: Seed-Mini Is Also the Best Strategist (2026-05-15)
+
+> *At T=0.7, seed-mini beats Haiku on design/reasoning tasks at 10× lower cost.*
+
+### Evidence (8 design/reasoning tasks, T=0.7)
+
+```
+Task                       gemini-lite    seed-mini    hermes-70b    haiku-4.5
+error_diagnosis               ✗             ✓            ✓          ✗
+experiment_design             ✗             ✓            ✓          ✓
+architecture_decision         ✗             ✓            ✓          ✓
+metaphor_generation           ✗             ✓            ✓          ✓
+bug_prediction                ✓             ✓            ✓          ✓
+novel_connection              ✗             ✓            ✓          ✓
+prioritization                ✗             ✓            ✓          ✓
+fleet_coordination            ✗             ✓            ✓          ✗
+
+Total:                        1/8          8/8          7/8          6/8
+```
+
+### The Temperature Discovery
+
+Seed-mini is temperature-invariant on arithmetic (T=0.0 through T=2.0 — all correct).
+But seed-mini is NOT temperature-invariant on strategy tasks. T=0.7 unlocks
+design/reasoning that T=0.0 suppresses. The calculator becomes a consultant.
+
+### Revised Fleet Roles
+
+| Role | Model | When | Cost |
+|------|-------|------|------|
+| Pump + Strategist | seed-mini (T=0.0 calc, T=0.7 strategy) | Everything | $0.05/1K |
+| Scalpel | gemini-lite (T=0.0) | Arithmetic + syllogisms within critical angles | $0.002/1K |
+| Diagnostic | hermes-70b | Activation mapping, 2nd opinion | $0.08/1K |
+| Heavy Synthesis | opus-4.6 (via Claude Code) | Novel theory, deep analysis, papers only | ~$15/query |
+
+Haiku is NOT cost-effective as a fleet strategist. Seed-mini does it better cheaper.
+Save Anthropic tokens for Opus — that's where the real value is.
