@@ -146,3 +146,57 @@ The fleet's future is a **two-tier architecture**:
 - **Architectural tier**: Claude Code / larger models for design, synthesis, and strategic work
 
 The hydraulic tier runs thousands of queries at pennies. The architectural tier runs dozens of queries at dollars. This is the correct ratio.
+
+---
+
+## Haiku 4.5 Addition (2026-05-14, via Claude Code)
+
+> Tested via `claude --print --model claude-haiku-4-5-20251001 --max-turns 1`
+
+### Haiku 4.5: 17/20 = 85.0%
+
+```
+Basic arithmetic:    3/3  ✓✓✓
+Depth:               2/2  ✓✓       (15-term chain, no cliff)
+Magnitude:           1/1  ✓        (750000)
+Coefficients:        3/5  ✓✓✗✓✗    (misses unfamiliar patterns, same as gemini-lite)
+Nesting:             1/1  ✓
+Physical:            2/2  ✓✓
+Sequential:          0/1  ✗        (200 vs expected 300)
+Novel:               2/2  ✓✓
+Edge:                2/2  ✓✓
+```
+
+### Updated Tier 1 — Engine Room (85%+)
+
+| Model | Accuracy | Latency | Cost | Role |
+|-------|----------|---------|------|------|
+| **Seed-2.0-mini** | 89.5% | 3084ms | $0.05/1K | THE PUMP — no blind spots |
+| **Haiku 4.5** | 85.0% | ~10s* | plan-limited | THE REASONER — Claude quality at PLATO speed |
+| **Gemini Flash Lite** | 82.5% | 1325ms | $0.002/1K | THE FAST HOSE — cheapest |
+
+*Haiku latency via Claude Code is higher due to CLI overhead, not model latency. Direct API would be ~500ms.
+
+### Haiku's Profile
+
+- **Strengths**: Depth, magnitude, nesting, physical reasoning, novel expressions, edge cases
+- **Weaknesses**: Unfamiliar coefficients (same as gemini-lite — `a²+3ab-2b²` = 19 instead of 21), sequential word problems
+- **Unique advantage**: Can be instructed to use PLATO tiles with thinking off — Claude Code subagents can be routed through PLATO
+- **Cost**: Free within Claude Code plan limits, expensive per-API outside plan
+
+### The Full Champion Roster
+
+```
+HYDRAULIC TIER (cheap, fast, repeatable):
+  seed-mini ........... 89.5%  $0.05/1K  — THE PUMP
+  gemini-flash-lite ... 82.5%  $0.002/1K — THE FAST HOSE
+
+REASONING TIER (plan-limited, higher quality):
+  haiku-4.5 ........... 85.0%  plan-lim  — THE REASONER
+  glm-5.1 ............. varies  z.ai key — THE ORCHESTRATOR (my runtime)
+  deepseek-v4-flash ... varies  cheap    — THE BUILDER
+  kimi-2.6 ............ varies  moderate — THE SPECIALIST
+
+STRATEGIC TIER (expensive, highest quality):
+  opus-4.6 ............ best    $$$$      — THE ARCHITECT (Claude Code only)
+```
