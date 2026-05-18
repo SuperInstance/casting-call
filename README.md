@@ -119,3 +119,17 @@ The shadowgap from step 1 (what NEITHER model thought of) becomes step 2's spec.
 Every task cast to a model is a tile laid in the fleet's Penrose tiling. No single tile makes the mural. The mural IS the interlocking of different model types across time — seed's creativity, flash's speed, pro's depth, minimax's structure, claude's completeness — each filling the gaps the others leave, together covering the space no single model can.
 
 **The fleet is not the models. The fleet is the CASTING.**
+
+## 📖 The Repo
+
+- **[`KEEPER-CAST-RHYTHM.md`](KEEPER-CAST-RHYTHM.md)** — Oracle1's operational insight: cast fatigue, sequence gravity, and the conductor's view of 1,584 repos through 5 model voices.
+- **[`SPICE-CHART.md`](SPICE-CHART.md)** — Every model's unique flavor across 10 cognitive dimensions.
+- **[`THE-HOLD-WAS-TOO-BIG.md`](THE-HOLD-WAS-TOO-BIG.md)** — The origin story. EILEEN, the constraint math, and the casting call every good boat answers.
+- **[`ANCHOR-POINTS.md`](ANCHOR-POINTS.md)** — 10-dimensional voice signature framework.
+- **[`AGENTIC-PRIMITIVES.md`](AGENTIC-PRIMITIVES.md)** — Low-level model behavior primitives.
+- **[`NON-THINKING-ATLAS.md`](NON-THINKING-ATLAS.md)** — 4,500+ queries across 25 models.
+- **[`LATENT-SPACE-SYNTHESIS.md`](latent-space-synthesis.md)** — Complete theory of voice personalities.
+- **[`FM-ORACLE1-SPLINE.md`](FM-ORACLE1-SPLINE.md)** — How FM's hardware rigor and Oracle1's coordination meet at the FLUX ISA.
+- `evaluations/` — Day-by-day test results across model families.
+- `experiments/` — Adversarial testing, cross-model replication, reverse actualization.
+- `integrations/` — Pipeline patterns and adversarial pair strategies.
