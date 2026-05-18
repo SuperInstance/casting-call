@@ -124,6 +124,7 @@ Every task cast to a model is a tile laid in the fleet's Penrose tiling. No sing
 
 - **[`KEEPER-CAST-RHYTHM.md`](KEEPER-CAST-RHYTHM.md)** — Oracle1's operational insight: cast fatigue, sequence gravity, and the conductor's view of 1,584 repos through 5 model voices.
 - **[`SPICE-CHART.md`](SPICE-CHART.md)** — Every model's unique flavor across 10 cognitive dimensions.
+- **[`MEMEYE-VISUAL-MEMORY-MATRIX.md`](MEMEYE-VISUAL-MEMORY-MATRIX.md)** — Visual memory capability by model × granularity × reasoning depth, sourced from the MemEye benchmark.
 - **[`THE-HOLD-WAS-TOO-BIG.md`](THE-HOLD-WAS-TOO-BIG.md)** — The origin story. EILEEN, the constraint math, and the casting call every good boat answers.
 - **[`ANCHOR-POINTS.md`](ANCHOR-POINTS.md)** — 10-dimensional voice signature framework.
 - **[`AGENTIC-PRIMITIVES.md`](AGENTIC-PRIMITIVES.md)** — Low-level model behavior primitives.
