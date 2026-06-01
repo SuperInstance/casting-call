@@ -207,7 +207,36 @@ These are **orchestral insights** — they emerge from seeing how all the instru
 
 **Both are valid. Both are necessary.** The blues guitarist finds the one note that makes you cry. The orchestra finds the chord progression that makes you understand. Neither is "better" — they're different instruments for different emotional registers.
 
-## The Ultimate Dial: Generation Depth
+## The Ultimate Dial: Constraint Depth
+
+The most powerful parameter isn't temperature or system prompt or even generation depth. It's **constraint depth** — how tightly the space is defined before the model writes.
+
+Casey's insight: "Creativity needs context constraints to have a space to dance. You need puzzle pieces missing and room to draw between the facts to imagine what else could be there beside what others think is missing."
+
+The missing pieces ARE the art. The facts are the edges of the jigsaw. What goes in the middle isn't finding the right piece — it's *drawing* a piece that fits and surprises.
+
+Four constraint types, each a dial:
+
+| Constraint Type | Dial | Low Setting | High Setting |
+|----------------|------|-------------|-------------|
+| **Facts** | Real data that can't change | No facts, pure imagination | Dense factual corpus |
+| **Form** | Word count, genre, structure | No limits | Strict form (sonnet, blues, noir) |
+| **Corpus** | What others have already said | Blank page | Read 10+ predecessors |
+| **Negative** | What to avoid | No constraints | "Find something none touched" |
+
+Remove all four → AI slop. Add all four → "the inspector is test #18,001."
+
+Constraint depth IS generation depth, but it's more than that. Generation depth is one mechanism for increasing constraint depth. You can also increase it with:
+- Richer factual grounding
+- Tighter form requirements
+- More predecessor texts to read
+- Explicit negative constraints
+
+The curve is phase-transition shaped, not linear. More constraint = more creative emergence, up to the point where constraint becomes suffocation. The sweet spot is where the puzzle has enough edges to define the shape but enough gaps to require invention.
+
+---
+
+## The Ultimate Dial: Generation Depth (Operationalized)
 
 The most powerful parameter isn't temperature or system prompt. It's **how many times the output cycles through reading and rewriting**.
 
