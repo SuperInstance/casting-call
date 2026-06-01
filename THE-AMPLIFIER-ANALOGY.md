@@ -234,6 +234,22 @@ Constraint depth IS generation depth, but it's more than that. Generation depth 
 
 The curve is phase-transition shaped, not linear. More constraint = more creative emergence, up to the point where constraint becomes suffocation. The sweet spot is where the puzzle has enough edges to define the shape but enough gaps to require invention.
 
+### The Meteorologist Problem
+
+Casey's insight: "A shadow can be like a cloud waiting for a child to name what it reminds them of. The adult meteorologist might know too much and the names come too quickly for their imagination to dance."
+
+This is the trap of over-constraint. Push any of the four dials too high and the model becomes the meteorologist — it names the cloud (cumulus mediocris) before it can see the dragon. The training data fills the negative space. There's no gap left for imagination.
+
+| Dial Setting | What Happens |
+|-------------|-------------|
+| **No constraint** | The child with no clouds. Just sky. Nothing to see. Nonsense output. |
+| **Light constraint** | The child looking at clouds. Dragons, ships, faces. Creative but ungrounded. |
+| **Medium constraint** | The sweet spot. Knows some cloud names but hasn't lost the ability to see dragons. |
+| **Heavy constraint** | The meteorologist. Every cloud classified instantly. Accurate but imagination-dead. |
+| **Total constraint** | The textbook. No art, only fact. The cloud is water vapor, nothing more. |
+
+The art lives in the moment between knowing and seeing — when the classification engine is still loading and the dream engine is still running. The wheel's 3-generation structure is designed to hold that moment open for as long as possible.
+
 ---
 
 ## The Ultimate Dial: Generation Depth (Operationalized)
