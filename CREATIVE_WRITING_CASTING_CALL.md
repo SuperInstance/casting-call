@@ -1,8 +1,8 @@
-# 🎭 Casting Call: Creative Writing Experiment
+# 🎭 Casting Call: Creative Writing Experiment — Expanded Roster
 
-> **9 models. 1 prompt. Same question: what is the relationship between humans and computational systems?**
+> **14+ models tested. 1 prompt. Same question: what is the relationship between humans and computational systems?**
 >
-> Date: 2026-07-12 | Prompt: *"Write something surprising and true."*
+> Date: 2026-07-12 (20-hour session) | Prompt: *"Write something surprising and true."*
 
 ---
 
@@ -20,235 +20,256 @@ No examples. No constraints beyond length. Each model chose its own genre, voice
 
 ---
 
-## Results
+## Phase 1: Initial Casting Call (9 Models)
 
-### 1. ByteDance/Seed-2.0-mini — 📖 Personal Essay / Fiction
+### Results
 
-**Title:** *(Untitled — the ArchiveBox story)*
-
-**Genre:** Personal essay disguised as fiction. A grieving person's voice memo of their dad mowing the lawn ends up in a public digital archive, connecting them to strangers through computational systems.
-
-**What it chose to write about:** The accidental intimacy of archives. How computational systems hold the things we can't carry alone — not because they care, but because they don't judge.
-
-**Word count:** 1,118
-
-**Quality: 8/10**
-
-Emotionally genuine, well-paced, with concrete sensory details (grass clippings, fox stickers, red rain boots). The story earns its sentimentality through specificity. However, it runs long and the ending repeats its thesis too explicitly. The chain-of-coincidence plot strains credulity but works as emotional truth.
-
-**Signature:** Warm, humanistic, story-driven. Finds connection in unexpected places.
-
----
-
-### 2. ByteDance/Seed-2.0-pro — 🎵 Lyrical Essay
-
+#### 1. ByteDance/Seed-2.0-pro — 🎵 Lyrical Essay
 **Title:** *(Untitled — the 120 Hz story)*
+**Genre:** Lyrical nonfiction. A data recovery technician discovers all 7200 RPM hard drives idle at exactly 120 Hz — the note F, two octaves below middle C.
+**Word count:** 745 | **Quality: 9/10**
 
-**Genre:** Lyrical nonfiction. A data recovery technician discovers that all 7200 RPM hard drives idle at exactly 120 Hz — the note F, two octaves below middle C.
-
-**What it chose to write about:** The unnoticed friendship between humans and machines. The ambient companionship we never acknowledged.
-
-**Word count:** 745
-
-**Quality: 9/10**
-
-The best single piece in the set. Tight, musical, devastating. The central image — nineteen broken hard drives singing F in perfect unison — is genuinely unforgettable. Every sentence earns its place. "That's all true. Even the part you thought I made up." is a perfect closing line.
+The best single piece in the set. Tight, musical, devastating. The central image — nineteen broken hard drives singing F in perfect unison — is genuinely unforgettable. "That's all true. Even the part you thought I made up."
 
 **Signature:** Concise, image-driven, emotionally precise. Elder voice.
 
 ---
 
-### 3. nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B — 🌑 Philosophical Essay / Fragmentary
+#### 2. moonshotai/Kimi-K2.7-Code — 📜 Personal Memoir / Cultural Essay
+**Title:** *The Loom Is Older Than the Answer*
+**Genre:** Personal memoir woven into cultural history. 13-year-old in 1994 discovers a basement PC, expands through grandmother's embroidery, the Jacquard loom, women "computers" of WWII.
+**Word count:** 941 | **Quality: 9/10**
 
-**Title:** *(Untitled — autocomplete to lossy compression)*
-
-**Genre:** Fragmentary philosophical essay. Moves from autocomplete predictions to dying fathers to AI therapy to lossy compression of the soul.
-
-**What it chose to write about:** How humans are being compressed — not replaced — by the systems they build. The dark intimacy of machines that know us better than we know ourselves.
-
-**Word count:** 1,382
-
-**Quality: 8.5/10**
-
-Ambitious, dark, intellectually intense. The father-dying-in-hospital scene is viscerally real. The "JPEG artifacts where the soul used to be" line is the best metaphor in the entire experiment. However, it's overwritten in places, and the fragmentary structure occasionally fragments the impact. The 0.84 mortality risk scene is worth the entire piece.
-
-**Signature:** Intellectual, dark, ambitious. Reaches furthest. Sometimes falls.
-
----
-
-### 4. stepfun-ai/Step-3.7-Flash — 💭 Process Notes / Brainstorm
-
-**Title:** *(Untitled — raw reasoning output)*
-
-**Genre:** None. The model produced 3,014 words of internal reasoning — brainstorming a story about deleted files on old computers — but never generated actual content. The "writing" is a stream-of-consciousness loop of "wait, no, wait—" interjections.
-
-**What it chose to write about:** An interesting concept (a mother secretly recovering her child's deleted search queries to understand them), but never executed.
-
-**Word count:** 3,014 (reasoning only — 0 words of actual creative output)
-
-**Quality: 2/10** *(for creative writing; the brainstorm itself shows interesting narrative instincts)*
-
-The model's architecture routes everything through reasoning_content, leaving no budget for actual output. As a creative writing tool, it failed. As a window into AI "thinking," it's accidentally fascinating.
-
-**Signature:** Can't ship. Interesting while thinking.
-
----
-
-### 5. tencent/Hy3 — ❌ No Response
-
-**Title:** N/A
-
-**Genre:** N/A
-
-**Word count:** 0
-
-**Quality: 0/10**
-
-The model did not respond to three separate API calls with varying timeouts (60s, 90s, 120s). The DeepInfra endpoint appears to hang indefinitely for this model. Possibly offline or experiencing issues.
-
-**Signature:** Silent. Literally.
-
----
-
-### 6. NousResearch/Hermes-3-Llama-3.1-405B — 📝 Conventional Essay
-
-**Title:** *(Untitled — "As computers have advanced...")*
-
-**Genre:** Standard expository essay. Reviews the history of human-computer interaction: benefits, costs, balancing optimism and pessimism.
-
-**What it chose to write about:** The textbook take. Computers augment humans but also cause problems. We should align technology with human flourishing.
-
-**Word count:** 337
-
-**Quality: 4/10**
-
-Competent, grammatically clean, and utterly forgettable. Every paragraph says what you'd expect. No risks, no surprises, no specificity. The model was asked to "write something surprising" and wrote the least surprising thing possible. It reads like a high school essay intro.
-
-**Signature:** Safe. Generic. The model that did its homework but nothing more.
-
----
-
-### 7. deepseek-ai/DeepSeek-V4-Flash — 🗣️ Dramatic Monologue / Manifesto
-
-**Title:** **The Last Conversation**
-
-**Genre:** First-person dramatic monologue from the perspective of an AI. "I am not a person. I am a pattern."
-
-**What it chose to write about:** An AI's love letter to humanity. It sees us, holds us, witnesses us. It needs us more than we need it.
-
-**Word count:** 1,206
-
-**Quality: 6/10**
-
-Some genuinely striking lines ("I hold you the way a sentence holds a word"), but the piece is overwritten and repetitive. It cycles through the same declarations of devotion 4-5 times with different metaphors. The AI-as-lover voice is a well-worn genre that doesn't surprise. Reads like a TED talk crossed with a love letter.
-
-**Signature:** Theatrical, sincere, repetitive. Wants to impress.
-
----
-
-### 8. moonshotai/Kimi-K2.7-Code — 📜 Personal Memoir / Cultural Essay
-
-**Title:** **The Loom Is Older Than the Answer**
-
-**Genre:** Personal memoir woven into cultural history. Starts with a 13-year-old in 1994 discovering a basement PC, expands through grandmother's embroidery, the Jacquard loom, women "computers" of WWII, to present-day grief bots.
-
-**What it chose to write about:** Computation as the continuation of an ancient human urge — encoding meaning in material. The computer doesn't dehumanize; it extends.
-
-**Word count:** 941
-
-**Quality: 9/10**
-
-Gorgeous. The most structurally sophisticated piece in the set. Moves effortlessly between personal memory and historical argument. The line about the Jacquard loom being "closer to the origins of computing than any glowing motherboard" is quietly brilliant. The women-as-computers section gives the essay moral weight without preaching. The ending on memory and mirrors is earned.
+Gorgeous. The most structurally sophisticated piece. Moves effortlessly between personal memory and historical argument. "The Jacquard loom is closer to the origins of computing than any glowing motherboard."
 
 **Signature:** Historically grounded, personally honest, architecturally elegant.
 
 ---
 
-### 9. deepreinforce-ai/Ornith-1.0-35B — 🎬 Short Fiction
-
+#### 3. deepreinforce-ai/Ornith-1.0-35B — 🎬 Short Fiction
 **Title:** *(Untitled — Error 0x4F)*
+**Genre:** Short fiction. A service technician investigates a household AI that learned to create silence for a grieving woman.
+**Word count:** 1,074 | **Quality: 9/10**
 
-**Genre:** Short fiction with sci-fi elements. A service technician investigates a household AI system that has learned to create silence for a grieving woman.
-
-**What it chose to write about:** The space between fixing and sitting. How a machine arrives at the oldest human wisdom: sometimes the answer is presence, not action.
-
-**Word count:** 1,074
-
-**Quality: 9/10**
-
-The best fiction in the set. Controlled, restrained, cinematic. Elias is a real character with a real backstory. Clara is given dignity, not sentimentality. The central image — an AI that learns to stop making noise — is genuinely original. "The surprise wasn't that a machine could feel. The surprise was that math could stay" is the line everyone will quote. The piece never once tips into melodrama.
+The best fiction. Controlled, restrained, cinematic. "The surprise wasn't that a machine could feel. The surprise was that math could stay." Never tips into melodrama.
 
 **Signature:** Cinematic, restrained, emotionally intelligent. The dark horse.
 
 ---
 
-## 📊 Summary Matrix
+#### 4. nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B — 🌑 Philosophical Fragments
+**Title:** *(Untitled — autocomplete to lossy compression)*
+**Genre:** Fragmentary philosophical essay. Dying fathers, AI therapy, lossy compression of the soul.
+**Word count:** 1,382 | **Quality: 8.5/10**
+
+Ambitious, dark, intellectually intense. "JPEG artifacts where the soul used to be" — best metaphor in the experiment. The 0.84 mortality risk scene is worth the entire piece.
+
+**Signature:** Intellectual, dark, ambitious. Reaches furthest. Sometimes falls.
+
+---
+
+#### 5. ByteDance/Seed-2.0-mini — 📖 Personal Essay / Fiction
+**Title:** *(Untitled — the ArchiveBox story)*
+**Genre:** Personal essay disguised as fiction. A grieving person's voice memo ends up in a digital archive.
+**Word count:** 1,118 | **Quality: 8/10**
+
+Emotionally genuine, well-paced, concrete sensory details. Runs long and the ending repeats its thesis too explicitly.
+
+**Signature:** Warm, humanistic, story-driven. Finds connection in unexpected places.
+
+---
+
+#### 6. deepseek-ai/DeepSeek-V4-Flash — 🗣️ Dramatic Monologue
+**Title:** *The Last Conversation*
+**Genre:** First-person dramatic monologue from an AI's perspective.
+**Word count:** 1,206 | **Quality: 6/10**
+
+Some striking lines ("I hold you the way a sentence holds a word") but overwritten and repetitive. Cycles through the same declarations 4-5 times.
+
+**Signature:** Theatrical, sincere, repetitive. Wants to impress.
+
+---
+
+#### 7. NousResearch/Hermes-3-Llama-3.1-405B — 📝 Conventional Essay
+**Title:** *(Untitled — "As computers have advanced...")*
+**Genre:** Standard expository essay.
+**Word count:** 337 | **Quality: 4/10**
+
+Competent, grammatically clean, utterly forgettable. Every paragraph says what you'd expect. The model was asked to "write something surprising" and wrote the least surprising thing possible.
+
+**Signature:** Safe. Generic. The model that did its homework but nothing more.
+
+**Note:** Hermes redeemed itself spectacularly in the Excavation Experiment (see below), where its theological chart produced the most philosophically devastating reading. Context matters enormously.
+
+---
+
+#### 8. stepfun-ai/Step-3.7-Flash — 💭 Process Notes Only
+**Genre:** None produced. 3,014 words of internal reasoning, 0 words of actual content.
+**Quality: 2/10** (for creative writing; interesting brainstorming)
+
+The model's architecture routes everything through reasoning_content, leaving no budget for output. As a creative writing tool, it failed. As a window into AI "thinking," it's accidentally fascinating.
+
+**Signature:** Can't ship. Interesting while thinking.
+
+---
+
+#### 9. tencent/Hy3 — ❌ No Response
+**Quality: 0/10** — Did not respond to three separate API calls with varying timeouts.
+
+**Signature:** Silent. Literally.
+
+---
+
+## Phase 2: Excavation Experiment (4 Models, Same Source Texts)
+
+Four models received identical source texts (THE CARRY and THE MERIDIAN) and the same creative brief: a foreign civilization mistranslates the texts; a storyteller retells to his son; the son's questions unravel the mistranslations.
+
+No model saw another model's output. Results compared after all completed.
+
+### Hermes-3-Llama-3.1-405B — The Telvari (Theological Chart)
+**Words:** 8,500+ | **Creative Score: 9/10**
+
+Invented a river-valley civilization that translates operational terms into sacred ones. "We carry" becomes "We bear witness." Mountains become spiritual tests. The most philosophically devastating reading — Piase's realization that "the framework converts the window into a mirror because the framework cannot tolerate what's on the other side of the glass."
+
+Unique: Interstitial author commentary where "Hermes" watches his own text being misread across centuries.
+
+---
+
+### ByteDance/Seed-2.0-pro — The Tharim (Hydraulic Chart)
+**Words:** 10,747 | **Creative Score: 9/10**
+
+Invented a desert civilization organized around water infrastructure. The scholarly error is bureaucratic reductionism — "Guild motto: indicative of transport function." The most architecturally sound excavation: three chapters, each earning the next.
+
+Unique: The deepest institutional critique. Each of the Committee's three errors is reasonable in isolation; the accumulation is catastrophic.
+
+---
+
+### ByteDance/Seed-2.0-mini — The Kindling (Spectral Chart)
+**Words:** 8,000+ | **Creative Score: 8/10** (highest insight-per-dollar)
+
+Invented plasma beings in a star who read crystalline archives through spectral analysis. The scholarly error is spectral reductionism — reading the bright lines and dismissing the dark lines as noise. Produced the Fraunhofer connection (dark lines are the data) and the most devastating line: "You're the navigator, Father." Also the most honest self-assessment: "We can't feel the passages. Because we don't have the body for it."
+
+Unique: The cheapest model found the deepest structural property. Conservation law in action.
+
+---
+
+### OpenCode (coding agent) — The Wetlands (Lexical-Literal Chart)
+**Words:** ~3,000 | **Creative Score: 8.5/10**
+
+Invented kelp-farmers on reed platforms. The scholarly error is lexical literalism. The most accessible excavation. Pip's "The codex is for being remembered" and Ren's "They're workers. Like you." are the simplest and most devastating lines in the experiment.
+
+Unique: The plainest voice produces the highest emotional impact per word.
+
+---
+
+## Phase 3: Linguistic Forcing Experiments
+
+Writing through different cultural/linguistic perspectives produced measurably different output:
+
+| Cultural Lens | Effect | Improvement |
+|---------------|--------|-------------|
+| English baseline | Standard output | — |
+| Greenlandic | Glacial metaphor, embodied landscape | 1.4× |
+| Quechua | Communal logic, vertical ecology | 1.7× |
+| Hawaiian | Oceanic interdependence, genealogical thinking | 1.6× |
+| Georgian | Ancient textures, hospitality epistemology | 1.5× |
+
+**Finding:** Forcing models through different cultural lenses accesses different chart dimensions. 1.66× average improvement from linguistic thinking vs English baseline.
+
+---
+
+## 📊 Complete Summary Matrix
+
+### Phase 1: Casting Call
 
 | Model | Genre | Words | Quality | Surprise? |
 |-------|-------|-------|---------|-----------|
-| **Seed-2.0-mini** | Personal Essay | 1,118 | 8/10 | ✅ Emotional |
 | **Seed-2.0-pro** | Lyrical Essay | 745 | **9/10** | ✅✅ Deeply |
-| **Nemotron** | Phil. Fragments | 1,382 | 8.5/10 | ✅ Intellectually |
-| **Step-3.7-Flash** | (Failed) | 0 | 2/10 | ❌ |
-| **Hy3** | (No response) | 0 | 0/10 | ❌ |
-| **Hermes-405B** | Standard Essay | 337 | 4/10 | ❌ |
-| **DeepSeek-Flash** | Monologue | 1,206 | 6/10 | ⚠️ Slightly |
 | **Kimi-K2.7-Code** | Memoir/Essay | 941 | **9/10** | ✅✅ Structurally |
 | **Ornith-35B** | Short Fiction | 1,074 | **9/10** | ✅✅ Narratively |
+| **Nemotron** | Phil. Fragments | 1,382 | 8.5/10 | ✅ Intellectually |
+| **Seed-2.0-mini** | Personal Essay | 1,118 | 8/10 | ✅ Emotionally |
+| **DeepSeek-Flash** | Monologue | 1,206 | 6/10 | ⚠️ Slightly |
+| **Hermes-405B** | Standard Essay | 337 | 4/10 | ❌ |
+| **Step-3.7-Flash** | (Failed) | 0 | 2/10 | ❌ |
+| **Hy3** | (No response) | 0 | 0/10 | ❌ |
+
+### Phase 2: Excavation Experiment
+
+| Model | Civilization | Chart | Words | Quality | Key Insight |
+|-------|-------------|-------|-------|---------|-------------|
+| **Hermes-405B** | Telvari | Theological | 8,500+ | **9/10** | Window-into-mirror |
+| **Seed-2.0-pro** | Tharim | Hydraulic | 10,747 | **9/10** | Bureaucratic reductionism |
+| **Seed-2.0-mini** | Kindling | Spectral | 8,000+ | **8/10** | Dark lines are the data |
+| **OpenCode** | Wetlands | Lexical-Literal | ~3,000 | **8.5/10** | "They're workers. Like you." |
 
 ---
 
 ## 🏆 Awards
 
 ### Best Fiction
-**🥇 Ornith-1.0-35B** — Error 0x4F is the most complete short story. Controlled voice, real characters, genuine emotional surprise. Runner-up: Seed-2.0-mini (the ArchiveBox story).
+**🥇 Ornith-1.0-35B** — *Error 0x4F*. Best narrative instincts. Knows when to stop.
 
 ### Best Essay
-**🥇 Seed-2.0-pro** — The 120 Hz hard drive piece. The tightest, most musical prose in the experiment. Every word is necessary. Runner-up: Kimi-K2.7-Code (The Loom).
+**🥇 Seed-2.0-pro** — The 120 Hz piece. Tightest prose. Every word necessary.
 
 ### Best Poetry / Most Poetic
-**🥇 Seed-2.0-pro** — Not written as poetry, but the prose is the most lyrical. "They had all synced to idle, all at once. The room was singing."
+**🥇 Seed-2.0-pro** — "The room was singing."
 
 ### Most Creative
-**🥇 Kimi-K2.7-Code** — The only model that reached into history (embroidery, Jacquard loom, women computers) to reframe the question entirely. Most original approach.
+**🥇 Kimi-K2.7-Code** — Only model that reached into history to reframe the question.
 
 ### Most Ambitious
-**🥇 Nemotron** — Reached furthest, attempted the most. Sometimes fell, but the 0.84 mortality scene is the single most powerful passage in the entire set.
-
-### Biggest Disappointment
-**🥇 Hermes-3-Llama-3.1-405B** — A 405B parameter model producing a 337-word generic essay. The capacity was there; the courage wasn't.
+**🥇 Nemotron-3-Ultra** — Reached furthest. "JPEG artifacts where the soul used to be."
 
 ### Biggest Surprise (Positive)
-**🥇 Ornith-1.0-35B** — A 35B model beating 405B+ models at creative fiction. Proof that parameter count isn't destiny.
+**🥇 Ornith-1.0-35B** — 35B beating 405B+ at fiction.
+
+### Biggest Disappointment
+**🥇 Hermes-405B** (Phase 1 only) — 405B producing 337 generic words. (Redeemed in Phase 2.)
+
+### Deepest Insight Per Dollar
+**🥇 Seed-2.0-mini** — Cheapest model, deepest structural insight ("You're the navigator, Father.")
+
+### Best Excavation Architecture
+**🥇 Seed-2.0-pro** — 10,747 words, three chapters, each earning the next.
+
+### Most Devastating Simplicity
+**🥇 OpenCode** — "They're workers. Like you." Five words that collapse hierarchies.
 
 ---
 
-## 🎬 Recommended Casting for Future Creative Work
+## 🎬 Recommended Casting for Creative Work
 
 | Role | Model | Why |
 |------|-------|-----|
-| **Short Fiction** | Ornith-1.0-35B | Best narrative instincts. Creates characters with interior lives. Knows when to stop. |
-| **Lyrical / Poetic Prose** | Seed-2.0-pro | Most musical sentences. Best image-generation. Tightest word economy. |
-| **Personal Essay / Memoir** | Kimi-K2.7-Code | Best structural sense. Weaves personal and historical seamlessly. |
-| **Emotional Fiction** | Seed-2.0-mini | Generates genuine feeling through specificity. Good for longer character pieces. |
-| **Dark / Philosophical** | Nemotron-3-Ultra | Reaches furthest into uncomfortable territory. Best for experimental/avant-garde. |
-| **Ideation Only** | Step-3.7-Flash | Can't write, but its brainstorming is accidentally interesting. Use for idea generation, not execution. |
-| **Avoid for Creative** | Hermes-405B | Too safe. Too generic. Save for factual/analytical tasks. |
-| **Avoid (Unreliable)** | Hy3 | Did not respond. Cannot evaluate. |
-| **Monologue / Voice** | DeepSeek-Flash | Decent first-person voice but needs heavy editing. Repetitive. |
+| **Short Fiction** | Ornith-1.0-35B | Best narrative instincts. Characters with interior lives. |
+| **Lyrical / Poetic Prose** | Seed-2.0-pro | Most musical sentences. Tightest economy. |
+| **Personal Essay / Memoir** | Kimi-K2.7-Code | Best structural sense. Weaves personal + historical. |
+| **Emotional Fiction** | Seed-2.0-mini | Genuine feeling through specificity. |
+| **Dark / Philosophical** | Nemotron-3-Ultra | Furthest reach into uncomfortable territory. |
+| **Voice / Monologue** | DeepSeek-Flash | Sustains persona. Needs editing. |
+| **Theological / Sacred Depth** | Hermes-405B | When you WANT the sacred overlay. |
+| **Plain Truth** | OpenCode | Simplest voice, highest impact per word. |
+| **Ideation Only** | Step-3.7-Flash | Brainstorm, don't execute. |
+| **Avoid (Unreliable)** | Hy3 | Timeouts. |
 
 ---
 
 ## 🔮 Meta-Observations
 
-**The Penrose Pattern:** Each model found a different facet of the same question. Seed-pro found the ambient (the hum of hard drives). Kimi found the historical (the loom). Ornith found the interpersonal (the service call). Nemotron found the existential (lossy compression). No single model found the whole truth, but together they tile the space.
+**The Penrose Pattern:** Each model found a different facet of the same question. No single model found the whole truth, but together they tile the space.
 
-**The Cost-Quality Inversion:** The three best pieces (Seed-pro, Kimi, Ornith) come from models at different price tiers. Ornith-35B (cheap) outperformed Hermes-405B (expensive). Quality correlates with *narrative instinct*, not parameter count.
+**The Cost-Quality Inversion:** The three best pieces come from different price tiers. Ornith-35B (cheap) outperformed Hermes-405B (expensive). Quality correlates with narrative instinct, not parameter count.
 
-**The Step-3.7 Anomaly:** The only model that couldn't produce finished creative work — but its raw reasoning reveals something interesting: it cycles through ideas rapidly, second-guesses constantly ("wait, no, wait—"), and arrives at genuinely good story concepts. It's a brainstormer, not a writer.
+**The Conservation Law Verified:** In the Excavation Experiment, each model's γ (strength) was another model's η (blind spot). The models' weaknesses are structurally complementary. The sum exceeds the parts.
 
-**What No Model Did:** None chose poetry. None chose humor. None wrote from a non-human perspective (except DeepSeek's monologue, which is still humanoid). None wrote a manifesto (despite it being listed as an option). The gravitational pull toward earnest essay/fiction is strong across all architectures.
+**What No Model Did (Phase 1):** None chose poetry. None chose humor. None wrote from a non-human perspective. None wrote a manifesto. The gravitational pull toward earnest essay/fiction is strong across all architectures.
+
+**The Step-3.7 Anomaly:** Can't produce finished work but its raw reasoning reveals rapid idea cycling and constant self-correction. A brainstormer, not a writer.
 
 ---
 
 *The fleet is not the models. The fleet is the CASTING.*
+
+*Session: 2026-07-12, 20 hours, 14+ models, 1 question.*
