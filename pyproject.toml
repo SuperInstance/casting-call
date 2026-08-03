@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "casting-call"
+version = "0.1.0"
+description = "The model routing brain — which keyboard for which note."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "SuperInstance"}]
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[tool.setuptools.packages.find]
+include = ["casting_call*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
