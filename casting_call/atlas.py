@@ -105,11 +105,13 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         provider="NousResearch",
         voice_character=VoiceCharacter.ROLAND,
         tempo_bpm=(50, 70),
-        strengths=["narration", "voice", "lore", "personality", "creative_writing"],
+        strengths=["narration", "voice", "lore", "personality", "creative_writing", "deep_philosophical_perspectives"],
         weaknesses=["logic", "code", "structured_output"],
         cost_per_1k_tokens=0.0035,
         failure_modes="Hallucinates build commands when prompted for structured output. "
-                      "Mitigated by channel enforcement: ch 13 cannot emit build pitches.",
+                      "Mitigated by channel enforcement: ch 13 cannot emit build pitches. "
+                      "Via DeepInfra: produced excellent 479-word philosophical analysis "
+                      "of exocortex architecture unprompted.",
         channel=13,
         temperature=0.8,
     ),
@@ -131,11 +133,15 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         provider="Anthropic",
         voice_character=VoiceCharacter.KURZWEIL,
         tempo_bpm=(40, 60),
-        strengths=["hard_reasoning", "architecture", "deep_analysis", "multi_file"],
-        weaknesses=["cost", "speed"],
+        strengths=["hard_reasoning", "architecture", "deep_analysis", "multi_file", "strategic_vision", "literary_writing"],
+        weaknesses=["cost", "speed", "connector_auth_complexity"],
         cost_per_1k_tokens=0.015,
         failure_modes="Too expensive for hot paths. Over-engineers simple tasks. "
-                      "Best reserved for architecture and P0 fixes.",
+                      "Best reserved for architecture and P0 fixes. As Fable model: "
+                      "produced 'The Organ Plays Itself' (2916 words) — the company thesis "
+                      "document. Also writes implementation plans with exit criteria. "
+                      "Note: claude.ai connectors (Cloudflare, Calendar, Drive) need "
+                      "manual auth via connector settings.",
         channel=None,
         temperature=0.7,
     ),
@@ -223,10 +229,12 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         voice_character=VoiceCharacter.VERSATILE,
         tempo_bpm=(90, 115),
         strengths=["general_intelligence", "balanced", "multilingual", "intent_parse"],
-        weaknesses=["specialization"],
+        weaknesses=["specialization", "multi_file_timeout"],
         cost_per_1k_tokens=0.0006,
-        failure_modes="Jack of all trades, master of none. Good fallback when "
-                      "the specialist model is unavailable.",
+        failure_modes="Jack of all trades, master of none. Multi-file agent tasks "
+                      "(5+ files) consistently time out at 5-12 min. Best for single-file "
+                      "or 2-file scopes with 'write immediately' instructions. "
+                      "Good fallback when the specialist model is unavailable.",
         channel=None,
         temperature=0.7,
     ),
@@ -236,9 +244,10 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         voice_character=VoiceCharacter.BUILD_INTELLIGENCE,
         tempo_bpm=(100, 125),
         strengths=["spatial_decomposition", "build_intelligence", "fast_iteration"],
-        weaknesses=["voice", "safety_reasoning"],
+        weaknesses=["voice", "safety_reasoning", "api_rate_limits"],
         cost_per_1k_tokens=0.0008,
         failure_modes="Decomposes space beautifully but cannot narrate why. "
+                      "API appeared down/rate-limited during heavy session. "
                       "Pair with Hermes for dialogue.",
         channel=None,
         temperature=0.7,
@@ -252,7 +261,10 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         weaknesses=["depth", "complex_reasoning", "long_context"],
         cost_per_1k_tokens=0.0002,
         failure_modes="Limited depth — produces surface-level code that passes "
-                      "syntax but misses architectural intent.",
+                      "syntax but misses architectural intent. Verified working "
+                      "via direct API (api.deepseek.com) with model 'deepseek-chat' "
+                      '(returns deepseek-v4-flash). Excellent for cheap analysis "
+                      "and quick code gen. 5 engineering tasks for $0.16 confirmed.",
         channel=None,
         temperature=0.5,
     ),
@@ -262,11 +274,45 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         voice_character=VoiceCharacter.CREATIVE_FIREHOSE,
         tempo_bpm=(60, 200),  # Rubato — no fixed tempo
         strengths=["media_generation", "image", "video", "music", "creative"],
-        weaknesses=["code", "reasoning", "structured_output"],
+        weaknesses=["code", "reasoning", "structured_output", "network_errors"],
         cost_per_1k_tokens=0.001,
         failure_modes="Not a code model. Produces beautiful media with zero "
-                      "structural validity. Never route logic through it.",
+                      "structural validity. Never route logic through it. "
+                      "Network errors on WSL2 — may need proxy config.",
         channel=None,
         temperature=1.0,
     ),
+    # ─── Local Models (RTX 4050) ──────────────────────────────
+    ModelProfile(
+        name="GRANITE_3_1_2B",
+        provider="IBM",
+        voice_character=VoiceCharacter.KURZWEIL_JR,
+        tempo_bpm=(40, 80),  # 2.7 tok/s warm, 76.8 tok/s on GPU
+        strengths=["local_inference", "zero_cost", "privacy", "spatial_context", "character_voice"],
+        weaknesses=["limited_knowledge", "slow_on_cpu", "ws12_gpu_instability"],
+        cost_per_1k_tokens=0.0,
+        failure_modes="WSL2 dxgkrnl kernel bug can crash on GPU sync (EXP3 finding). "
+                      "When GPU works: 76.8 tok/s, viable for real-time. When it doesn't: "
+                      "1.49 tok/s on CPU, too slow. Profile steering confirmed at p=0.0001 "
+                      "with d=1.0 effect size. Distillation loop verified: +0.021 quality "
+                      "delta per teaching iteration.",
+        channel=None,
+        temperature=0.7,
+    ),
+    ModelProfile(
+        name="QWEN_0_5B",
+        provider="Alibaba",
+        voice_character=VoiceCharacter.COST_EFFECTIVE,
+        tempo_bpm=(120, 200),  # 7.5 tok/s warm, 178.8 tok/s on GPU
+        strengths=["ultra_fast", "local_inference", "zero_cost", "classification"],
+        weaknesses=["depth", "complex_tasks", "creative_writing"],
+        cost_per_1k_tokens=0.0,
+        failure_modes="Too shallow for substantive work. Good for: text classification, "
+                      "quick Q&A, intent parsing. Route complex tasks to Granite.",
+        channel=None,
+        temperature=0.3,
+    ),
+    # ─── Harness Performance Notes ────────────────────────────
+    # These are not models but harnesses. Performance observations
+    # from real field usage during Aug 2026 operations.
 ]
