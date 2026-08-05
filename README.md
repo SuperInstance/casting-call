@@ -619,7 +619,7 @@ print(result["reason"])
 pytest tests/ -v
 ```
 
-89 tests, all passing.
+121 tests, all passing.
 
 ---
 

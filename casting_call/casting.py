@@ -243,6 +243,9 @@ class CastingDirector:
             "synthesis": ["synthesis", "summary"],
             "vision": ["vision", "multimodal", "synthesis"],
             "voice": ["voice", "narration", "creative_writing"],
+            "forced_perspective": ["forced_perspective", "creative_ideation", "intent_parse"],
+            "creative_nonfiction": ["creative_writing", "prose_precision", "prose_brevity", "deep_planning"],
+            "sensory_creative": ["sensory_creative", "phenomenological_instinct", "creative_writing"],
         }
         required = strength_map.get(role, [])
         return any(s in profile.strengths for s in required)

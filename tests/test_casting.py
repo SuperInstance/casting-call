@@ -299,3 +299,157 @@ class TestVoiceCharacterAlignment:
         cast = director.cast_pipeline(roles)
         voices = [p.voice_character for p in cast]
         assert len(set(voices)) >= 4  # at least 4 distinct voices in 5 roles
+
+
+# ── Creative Role Tests ──────────────────────────────────────────────
+
+class TestCreativeRoles:
+    """The new creative roles added Aug 5: forced_perspective,
+    creative_nonfiction, sensory_creative."""
+
+    @pytest.mark.parametrize("role,expected_model", [
+        ("forced_perspective", "SEED_MINI"),
+        ("creative_nonfiction", "SEED_PRO"),
+        ("sensory_creative", "DEEPSEEK_V4_FLASH"),
+    ])
+    def test_creative_role_casting(self, director, role, expected_model):
+        profile = director.cast(role)
+        assert profile.name == expected_model
+
+    def test_forced_perspective_is_catalyst(self, director):
+        """Forced perspective should use the catalyst model (Seed-mini)."""
+        profile = director.cast("forced_perspective")
+        assert "forced_perspective" in profile.strengths
+
+    def test_creative_nonfiction_is_patient(self, director):
+        """Creative nonfiction should use the patient model (Seed-pro)."""
+        profile = director.cast("creative_nonfiction")
+        assert "creative_writing" in profile.strengths
+
+    def test_sensory_creative_is_cheap(self, director):
+        """Sensory creative should use the cheapest model that tastes salt."""
+        profile = director.cast("sensory_creative")
+        assert "sensory_creative" in profile.strengths
+        assert profile.cost_per_1k_tokens <= 0.001  # very affordable
+
+    def test_creative_pipeline_casts(self, director):
+        """A creative pipeline: ideate → force-perspective → nonfiction → sensory."""
+        roles = ["creative_ideation", "forced_perspective", "creative_nonfiction", "sensory_creative"]
+        cast = director.cast_pipeline(roles)
+        assert len(cast) == 4
+        # Each should be a different model
+        names = [p.name for p in cast]
+        # At least 3 distinct models in 4 roles
+        assert len(set(names)) >= 3
+
+    def test_creative_role_fallbacks(self, director):
+        """Excluding primary creative models falls through the chain."""
+        profile = director.cast("sensory_creative", {"exclude": ["DEEPSEEK_V4_FLASH"]})
+        assert profile.name != "DEEPSEEK_V4_FLASH"
+        # Should fall to SEED_PRO
+        assert profile.name == "SEED_PRO"
+
+    def test_creative_role_swap_feasible(self, director):
+        """DeepSeek-Flash can swap into creative_nonfiction."""
+        assert director.swap("creative_nonfiction", "DEEPSEEK_V4_FLASH") is True
+
+    def test_creative_role_swap_infeasible(self, director):
+        """Qwen-Coder cannot do sensory creative work."""
+        assert director.swap("sensory_creative", "QWEN3_CODER") is False
+
+    def test_creative_what_if(self, director):
+        result = director.what_if("sensory_creative", "SEED_PRO")
+        assert result["feasible"] is True
+        assert "cost_delta" in result
+
+    def test_forced_perspective_voice(self, director):
+        """Forced perspective uses the analog synth voice — buzzy, creative."""
+        profile = director.cast("forced_perspective")
+        assert profile.voice_character == VoiceCharacter.ANALOG_SYNTH
+
+    def test_sensory_creative_voice(self, director):
+        """Sensory creative uses the sensory direct voice — body-first."""
+        profile = director.cast("sensory_creative")
+        assert profile.voice_character == VoiceCharacter.SENSORY_DIRECT
+
+
+# ── Harness Notes Tests ──────────────────────────────────────────────
+
+class TestHarnessNotes:
+    """Test the harness performance observations module."""
+
+    def test_get_harness_by_name(self):
+        from casting_call.harness_notes import get_harness
+        h = get_harness("KimiCode")
+        assert h is not None
+        assert h.name == "KimiCode"
+
+    def test_get_harness_case_insensitive(self):
+        from casting_call.harness_notes import get_harness
+        h = get_harness("kimicode")
+        assert h is not None
+
+    def test_get_harness_not_found(self):
+        from casting_call.harness_notes import get_harness
+        assert get_harness("Nonexistent") is None
+
+    def test_all_harnesses(self):
+        from casting_call.harness_notes import all_harnesses
+        harnesses = all_harnesses()
+        assert len(harnesses) >= 7
+        for h in harnesses:
+            assert h.name
+            assert h.cli_path
+            assert len(h.best_for) > 0
+            assert len(h.poor_for) > 0
+            assert len(h.notes) > 20
+
+    def test_harness_profile_is_frozen(self):
+        from casting_call.harness_notes import HarnessProfile
+        h = HarnessProfile(
+            name="test", cli_path="/bin/test",
+            best_for=[], poor_for=[], notes="",
+            session_mgmt="", speed="", reliability="",
+        )
+        # frozen dataclass
+        import dataclasses
+        assert dataclasses.is_dataclass(h)
+
+    @pytest.mark.parametrize("name", [
+        "KimiCode", "Claude Code (Fable)", "OpenCode", "MMX (MiniMax)",
+        "Ollama (Local GPU)", "DeepInfra MCP", "DeepSeek API",
+        "GLM Subagents (Z.ai Max)",
+    ])
+    def test_known_harness_exists(self, name):
+        from casting_call.harness_notes import get_harness
+        assert get_harness(name) is not None, f"Missing harness: {name}"
+
+    def test_kimicode_best_for_includes_lua(self):
+        from casting_call.harness_notes import get_harness
+        h = get_harness("KimiCode")
+        assert "lua_code" in h.best_for
+
+    def test_claude_best_for_includes_architecture(self):
+        from casting_call.harness_notes import get_harness
+        h = get_harness("Claude Code (Fable)")
+        assert "architecture" in h.best_for
+
+    def test_mmx_poor_for_includes_code(self):
+        from casting_call.harness_notes import get_harness
+        h = get_harness("MMX (MiniMax)")
+        assert "code" in h.poor_for
+
+    def test_glm_subagents_timeout_documented(self):
+        from casting_call.harness_notes import get_harness
+        h = get_harness("GLM Subagents (Z.ai Max)")
+        assert "timeout" in h.notes.lower() or "time out" in h.notes.lower()
+
+    def test_ollama_local_gpu_documented(self):
+        from casting_call.harness_notes import get_harness
+        h = get_harness("Ollama (Local GPU)")
+        assert "RTX 4050" in h.notes or "GPU" in h.notes
+
+    def test_deepseek_cost_documented(self):
+        from casting_call.harness_notes import get_harness
+        h = get_harness("DeepSeek API")
+        assert "$0.16" in h.notes or "cost" in h.notes.lower() or "cheap" in h.notes.lower()
