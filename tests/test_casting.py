@@ -24,13 +24,14 @@ def director(atlas):
 
 class TestModelAtlas:
     def test_default_has_all_models(self, atlas):
-        """All 13 canonical models are registered."""
-        assert len(atlas) == 13
+        """All 15 canonical models are registered."""
+        assert len(atlas) == 15
 
     @pytest.mark.parametrize("name", [
         "HERMES_405B", "GEMINI_PRO", "CLAUDE_OPUS", "CLAUDE_SONNET",
         "SEED_MINI", "SEED_PRO", "QWEN3_6", "QWEN3_CODER",
         "NEMOTRON_ULTRA", "GLM_5_2", "KIMI_K3", "DEEPSEEK_V3", "MMX_M3",
+        "GRANITE_3_1_2B", "QWEN_0_5B",
     ])
     def test_model_exists(self, atlas, name):
         assert name in atlas

@@ -260,11 +260,13 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         strengths=["cost_effective", "quick_code", "fast_iteration"],
         weaknesses=["depth", "complex_reasoning", "long_context"],
         cost_per_1k_tokens=0.0002,
-        failure_modes="Limited depth — produces surface-level code that passes "
-                      "syntax but misses architectural intent. Verified working "
-                      "via direct API (api.deepseek.com) with model 'deepseek-chat' "
-                      '(returns deepseek-v4-flash). Excellent for cheap analysis "
-                      "and quick code gen. 5 engineering tasks for $0.16 confirmed.",
+        failure_modes=(
+            "Limited depth — produces surface-level code that passes "
+            "syntax but misses architectural intent. Verified working "
+            "via direct API (api.deepseek.com) with model 'deepseek-chat' "
+            "(returns deepseek-v4-flash). Excellent for cheap analysis "
+            "and quick code gen. 5 engineering tasks for $0.16 confirmed."
+        ),
         channel=None,
         temperature=0.5,
     ),
