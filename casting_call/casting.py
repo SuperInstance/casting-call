@@ -30,13 +30,16 @@ _ROLE_DEFAULTS: dict[str, str] = {
     "synthesis":            "GEMINI_PRO",
     "vision":               "GEMINI_PRO",
     "voice":                "HERMES_405B",
+    "forced_perspective":   "SEED_MINI",
+    "creative_nonfiction":  "SEED_PRO",
+    "sensory_creative":     "DEEPSEEK_V4_FLASH",
 }
 
 # Fallback models when the primary is unavailable.
 _ROLE_FALLBACKS: dict[str, list[str]] = {
-    "intent_parse":         ["SEED_MINI", "GLM_5_2", "DEEPSEEK_V3"],
+    "intent_parse":         ["SEED_MINI", "GLM_5_2", "DEEPSEEK_V4_FLASH"],
     "planning":             ["SEED_PRO", "QWEN3_6", "CLAUDE_SONNET"],
-    "code_gen":             ["QWEN3_CODER", "DEEPSEEK_V3", "CLAUDE_SONNET"],
+    "code_gen":             ["QWEN3_CODER", "DEEPSEEK_V4_FLASH", "CLAUDE_SONNET"],
     "personality_wrap":     ["HERMES_405B", "GLM_5_2"],
     "safety_check":         ["NEMOTRON_ULTRA", "CLAUDE_OPUS"],
     "creative_ideation":    ["SEED_MINI", "MMX_M3"],
@@ -44,6 +47,9 @@ _ROLE_FALLBACKS: dict[str, list[str]] = {
     "synthesis":            ["GEMINI_PRO", "GLM_5_2", "CLAUDE_SONNET"],
     "vision":               ["GEMINI_PRO", "GLM_5_2"],
     "voice":                ["HERMES_405B", "GLM_5_2"],
+    "forced_perspective":   ["SEED_MINI", "GLM_5_2"],
+    "creative_nonfiction":  ["SEED_PRO", "DEEPSEEK_V4_FLASH", "CLAUDE_SONNET"],
+    "sensory_creative":     ["DEEPSEEK_V4_FLASH", "SEED_PRO", "GLM_5_2"],
 }
 
 
@@ -107,6 +113,9 @@ class CastingDirector:
             "synthesis": "synthesis",
             "vision": "vision",
             "voice": "voice",
+            "forced_perspective": "forced_perspective",
+            "creative_nonfiction": "creative_writing",
+            "sensory_creative": "sensory_creative",
         }
         strength = strength_map.get(role)
         if strength:

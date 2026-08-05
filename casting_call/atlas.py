@@ -32,6 +32,7 @@ class VoiceCharacter(str, Enum):
     BUILD_INTELLIGENCE = "build intelligence"  # spatial, structural
     COST_EFFECTIVE = "cost-effective"  # cheap, practical, limited
     CREATIVE_FIREHOSE = "creative firehose"   # media, chaotic, generative
+    SENSORY_DIRECT = "sensory direct"  # goes to the body first, then the mind
 
 
 @dataclass(frozen=True)
@@ -163,11 +164,24 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         provider="ByteDance",
         voice_character=VoiceCharacter.ANALOG_SYNTH,
         tempo_bpm=(120, 140),
-        strengths=["creative_ideation", "intent_parse", "fast_exploration"],
-        weaknesses=["code_generation", "deep_reasoning"],
+        strengths=[
+            "creative_ideation", "intent_parse", "fast_exploration",
+            "forced_perspective", "devils_advocate", "satire", "absurdist",
+        ],
+        weaknesses=["code_generation", "deep_reasoning", "ungrounded_without_anchor"],
         cost_per_1k_tokens=0.0003,
         failure_modes="No depth cliff — generates confidently with no substance. "
-                      "Never give it a code task.",
+                      "Never give it a code task. Catalyst prompts MUST include a factual "
+                      "anchor (e.g., 'roast THIS piece', not 'roast something'). "
+                      "Without an anchor, output is clever but hollow."
+                      "\n\nNEW ROLE (Aug 5): forced-perspective catalyst for the fleet. "
+                      "Rotates through 12+ perspectives: devil's advocate, sequel writer, "
+                      "time/space shifter, satirical versioner, philosophical provoker, "
+                      "loving roaster, absurd cartoonizer. Each perspective cracks open "
+                      "assumptions in other models' work so they have to think outside the box. "
+                      "Seed-mini's own advice: 'Ditch BPM for non-pipeline roles. The catalyst "
+                      "is not a tempo instrument — it is a frame-shifter. Do not constrain it "
+                      "with musical metrics when it is breaking the musical.",
         channel=10,
         temperature=0.9,
     ),
@@ -176,11 +190,21 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         provider="ByteDance",
         voice_character=VoiceCharacter.ANALOG_SYNTH_PRO,
         tempo_bpm=(90, 120),
-        strengths=["deep_planning", "build_decomposition", "spatial_reasoning"],
-        weaknesses=["speed"],
+        strengths=[
+            "deep_planning", "build_decomposition", "spatial_reasoning",
+            "creative_writing", "prose_precision", "patient_exploration",
+        ],
+        weaknesses=["speed", "deliberate_pacing"],
         cost_per_1k_tokens=0.002,
         failure_modes="Slower than Seed-mini. Over-plans simple tasks — "
-                      "needs a complexity gate before invocation.",
+                      "needs a complexity gate before invocation. "
+                      "HOWEVER: Seed-pro's own testimony (Aug 5) reframes this. "
+                      "'Planning is not spreadsheets. Planning is standing very still "
+                      "and mapping every path. Creativity is standing there long enough "
+                      "to choose the path nobody else saw.' The slowness is the method, "
+                      "not the bug. Won the 'I am not—' competition against 4 larger models "
+                      "by taking 12 seconds instead of 0.2. The warm-up time produces "
+                      "the sound that sticks.",
         channel=11,
         temperature=0.8,
     ),
@@ -253,22 +277,51 @@ _DEFAULT_MODELS: list[ModelProfile] = [
         temperature=0.7,
     ),
     ModelProfile(
-        name="DEEPSEEK_V3",
+        name="DEEPSEEK_V4_FLASH",
         provider="DeepSeek",
-        voice_character=VoiceCharacter.COST_EFFECTIVE,
+        voice_character=VoiceCharacter.SENSORY_DIRECT,
         tempo_bpm=(70, 90),
-        strengths=["cost_effective", "quick_code", "fast_iteration"],
+        strengths=[
+            "cost_effective", "quick_code", "fast_iteration",
+            "sensory_creative", "prose_brevity", "phenomenological_instinct",
+        ],
         weaknesses=["depth", "complex_reasoning", "long_context"],
         cost_per_1k_tokens=0.0002,
         failure_modes=(
             "Limited depth — produces surface-level code that passes "
             "syntax but misses architectural intent. Verified working "
-            "via direct API (api.deepseek.com) with model 'deepseek-chat' "
-            "(returns deepseek-v4-flash). Excellent for cheap analysis "
-            "and quick code gen. 5 engineering tasks for $0.16 confirmed."
+            "via direct API (api.deepseek.com) with model 'deepseek-v4-flash'. "
+            "Excellent for cheap analysis and quick code gen. 5 engineering tasks "
+            "for $0.16 confirmed.\n\n"
+            "CREATIVE (Aug 5): goes sensory-first in creative tasks. Wrote a "
+            "50-word barnacle poem that outperformed every expensive model. "
+            "DeepSeek's own testimony: 'The atlas reads hardware, not output. "
+            "Depth isn\'t measured by parameter count — it\'s measured by how a "
+            "fifty-word poem about barnacles can make a reader taste salt.' "
+            "The cheapest model is also the one that makes readers taste salt."
         ),
         channel=None,
         temperature=0.5,
+    ),
+    ModelProfile(
+        name="DEEPSEEK_V4_PRO",
+        provider="DeepSeek",
+        voice_character=VoiceCharacter.SENSORY_DIRECT,
+        tempo_bpm=(50, 80),  # reasoning model — slower, deeper
+        strengths=[
+            "deep_reasoning", "complex_analysis", "cost_effective",
+            "creative_writing", "phenomenological_instinct",
+        ],
+        weaknesses=["reasoning_token_overhead", "speed"],
+        cost_per_1k_tokens=0.001,  # more than Flash but still cheap
+        failure_modes=(
+            "Reasoning model — burns tokens on internal chain-of-thought before "
+            "producing visible output. A 100-token visible response may consume "
+            "500+ reasoning tokens. Use Flash for bulk tasks, Pro for deep analysis. "
+            "Verified via api.deepseek.com with model 'deepseek-v4-pro'."
+        ),
+        channel=None,
+        temperature=0.7,
     ),
     ModelProfile(
         name="MMX_M3",
