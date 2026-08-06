@@ -92,7 +92,7 @@ class TestBPMRanges:
             "Largo", "Larghetto", "Adagio", "Andante", "Moderato",
             "Allegro", "Presto", "Prestissimo", "Vivace", "Allegretto",
             "Rubato", "Cantabile", "Sostenuto", "Maestoso", "Giocoso",
-            "Legato", "Staccato", "Grave", "Agitato",
+            "Legato", "Staccato", "Grave", "Agitato", "Lento",
         }
         assert profile.name in valid_terms, f"{role}: '{profile.name}' not a recognized tempo term"
 

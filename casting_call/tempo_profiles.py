@@ -86,4 +86,22 @@ ROLE_TEMPO_PROFILES: dict[str, TempoProfile] = {
         bpm_high=75,
         description="Slow, warm — the spoken line arrives after the build, like a breath.",
     ),
+    "forced_perspective": TempoProfile(
+        name="Vivace",
+        bpm_low=100,
+        bpm_high=160,
+        description="Lively, shifting — the catalyst cracks open assumptions at a whim.",
+    ),
+    "creative_nonfiction": TempoProfile(
+        name="Andante",
+        bpm_low=70,
+        bpm_high=95,
+        description="Walking, deliberate — prose that takes its time because each sentence carries weight.",
+    ),
+    "sensory_creative": TempoProfile(
+        name="Lento",
+        bpm_low=50,
+        bpm_high=80,
+        description="Slow, sensual — sensory writing goes to the body first. The body does not hurry.",
+    ),
 }
