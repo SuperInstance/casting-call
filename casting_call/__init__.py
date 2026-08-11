@@ -17,6 +17,7 @@ from casting_call.atlas import ModelAtlas, ModelProfile, VoiceCharacter
 from casting_call.casting import CastingDirector
 from casting_call.tempo_profiles import TempoProfile, ROLE_TEMPO_PROFILES
 from casting_call.pipeline import cast, get_profile, get_tempo, configure, available_roles, available_models
+from casting_call.peer_consult import PeerConsultant, ConsultationResult, ExchangeEvent, peer_consult
 
 __all__ = [
     "ModelAtlas",
@@ -32,6 +33,11 @@ __all__ = [
     "configure",
     "available_roles",
     "available_models",
+    # Peer consultation
+    "PeerConsultant",
+    "ConsultationResult",
+    "ExchangeEvent",
+    "peer_consult",
 ]
 
 __version__ = "0.1.0"
