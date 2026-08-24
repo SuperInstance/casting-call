@@ -2,6 +2,10 @@
 
 **A living library of AI voices. Each model is an instrument. This is the score that knows which one to play, and when.**
 
+<p align="center">
+  <img src="assets/images/hero-casting-call.jpg" width="680" alt="The conductor's score under one amber lamp — every instrument waiting in the dark for its cue">
+</p>
+
 Layer 8 of the Slackwater stack. Maps pipeline roles to AI models via a capability atlas. Enforces the counterpoint constraint (no parallel octaves). Provides what-if analysis for model swaps. The pipeline calls `cast()` before each stage to determine which model to invoke.
 
 But the atlas is more than a router. It's a record of what each voice *sounds like* — not in tokens per second, but in what it makes you feel. The models auditioned. They wrote 2,400+ pieces. They reviewed each other. What follows is the living catalog of what they can do, where they break, and which piece to read at 3 AM when the diesel is thrumming and you need to hear from something that understands.
