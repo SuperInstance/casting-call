@@ -1,0 +1,90 @@
+{
+  "game": "mastermind",
+  "seed": 42,
+  "secret": [
+    6,
+    1,
+    1,
+    6
+  ],
+  "model": "nemotron-3.5-lightning:latest",
+  "base": "http://127.0.0.1:11434/v1",
+  "solved_turn": null,
+  "max_turns": 12,
+  "invalid_guesses": 12,
+  "repeat_guesses": 0,
+  "moves": [
+    {
+      "turn": 1,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 13.59619951248169
+    },
+    {
+      "turn": 2,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.894380807876587
+    },
+    {
+      "turn": 3,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.545862197875977
+    },
+    {
+      "turn": 4,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 13.189284563064575
+    },
+    {
+      "turn": 5,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.706300020217896
+    },
+    {
+      "turn": 6,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 13.169926643371582
+    },
+    {
+      "turn": 7,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 13.372749328613281
+    },
+    {
+      "turn": 8,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.999403238296509
+    },
+    {
+      "turn": 9,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 13.663248538970947
+    },
+    {
+      "turn": 10,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 13.447744369506836
+    },
+    {
+      "turn": 11,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 13.033982515335083
+    },
+    {
+      "turn": 12,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 14.121011734008789
+    }
+  ]
+}
