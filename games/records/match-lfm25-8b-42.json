@@ -1,0 +1,98 @@
+{
+  "game": "mastermind",
+  "seed": 42,
+  "secret": [
+    6,
+    1,
+    1,
+    6
+  ],
+  "model": "/home/caseydigennaro/liquid-lab/models/LFM2.5-8B-A1B-Q4_K_M.gguf",
+  "base": "http://127.0.0.1:8003/v1",
+  "solved_turn": null,
+  "max_turns": 12,
+  "invalid_guesses": 11,
+  "repeat_guesses": 0,
+  "moves": [
+    {
+      "turn": 1,
+      "guess": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "black": 0,
+      "white": 1,
+      "repeat": false,
+      "seconds": 5.663978338241577,
+      "raw": "\nI have not yet received any feedback from the first guess, so I will begin with a straightforward initial guess.  \n\nGUESS: 1 2 3 4"
+    },
+    {
+      "turn": 2,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.43779182434082
+    },
+    {
+      "turn": 3,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.52417516708374
+    },
+    {
+      "turn": 4,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.588787794113159
+    },
+    {
+      "turn": 5,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.455462455749512
+    },
+    {
+      "turn": 6,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.499733209609985
+    },
+    {
+      "turn": 7,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.443239212036133
+    },
+    {
+      "turn": 8,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.531681537628174
+    },
+    {
+      "turn": 9,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.573622226715088
+    },
+    {
+      "turn": 10,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.6136438846588135
+    },
+    {
+      "turn": 11,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.543212652206421
+    },
+    {
+      "turn": 12,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 7.531606197357178
+    }
+  ]
+}
