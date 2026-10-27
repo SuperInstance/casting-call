@@ -1,0 +1,98 @@
+{
+  "game": "mastermind",
+  "seed": 42,
+  "secret": [
+    6,
+    1,
+    1,
+    6
+  ],
+  "model": "nemotron-3-nano:30b",
+  "base": "http://127.0.0.1:11434/v1",
+  "solved_turn": null,
+  "max_turns": 12,
+  "invalid_guesses": 11,
+  "repeat_guesses": 0,
+  "moves": [
+    {
+      "turn": 1,
+      "guess": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "black": 0,
+      "white": 1,
+      "repeat": false,
+      "seconds": 12.98120641708374,
+      "raw": "**Reasoning:**  \n- Use four distinct digits to maximize information on the first turn.  \n- Digits 1\u20114 cover a quarter of the possible range and give clear feedback for each position.  \n\nGUESS: 1 2 3 4"
+    },
+    {
+      "turn": 2,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 51.60363006591797
+    },
+    {
+      "turn": 3,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 52.26158547401428
+    },
+    {
+      "turn": 4,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 49.93131494522095
+    },
+    {
+      "turn": 5,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 51.58867383003235
+    },
+    {
+      "turn": 6,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 50.57422471046448
+    },
+    {
+      "turn": 7,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 50.83840465545654
+    },
+    {
+      "turn": 8,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 52.26241683959961
+    },
+    {
+      "turn": 9,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 52.41420078277588
+    },
+    {
+      "turn": 10,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 51.97514224052429
+    },
+    {
+      "turn": 11,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 50.089519739151
+    },
+    {
+      "turn": 12,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 52.609246015548706
+    }
+  ]
+}
