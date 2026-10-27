@@ -1,0 +1,138 @@
+{
+  "game": "mastermind",
+  "seed": 42,
+  "secret": [
+    6,
+    1,
+    1,
+    6
+  ],
+  "model": "qwen3-coder-30b:latest",
+  "base": "http://127.0.0.1:11434/v1",
+  "solved_turn": null,
+  "max_turns": 12,
+  "invalid_guesses": 6,
+  "repeat_guesses": 0,
+  "moves": [
+    {
+      "turn": 1,
+      "guess": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "black": 1,
+      "white": 1,
+      "repeat": false,
+      "seconds": 2.6223225593566895,
+      "raw": "Since this is my first guess and I have no information yet, I should use a strategy that gives me the most information possible. The best approach is to use a guess that covers multiple possibilities efficiently.\n\nI'll use the guess 1 1 2 2. This guess has two 1's and two 2's, which will help me determine:\n- How many 1's and 2's are in the correct positions (black)\n- How many 1's and 2's are in the wrong positions (white)\n- This will also help me deduce the presence of other digits\n\nGUESS: 1 1 2 2"
+    },
+    {
+      "turn": 2,
+      "raw": "Let me analyze the first guess step by step.\n\nGuess: 1 1 2 2\nResult: black 1, white 1\n\nThis means:\n- Exactly 1 peg is the correct digit in the correct position\n- Exactly 1 peg is the correct digit but in the wrong position\n- The remaining 2 pegs are incorrect digits\n\nLooking at the guess 1 1 2 2:\n- There are two 1's and two 2's\n- Since we have black 1 and white 1, one of the positions has the correct digit in the correct spot\n- One of the other positions has a correct digit but in the wrong position\n\nLet me think about what this tells us:\n- If position 1 has a 1 that's correct, then we have one 1 in the right place, and one 2 in the wrong place\n- If position 2 has a 1 that's correct, then we have one 1 in the right place, and one 2 in the wrong place\n- If position 3 has a 2 that's correct, then we have one 2 in the right place, and one 1 in the wrong place\n- If position 4 has a 2 that's correct, then we have one 2 in the right place, and one 1 in the wrong place\n\nLet me try a systematic approach. Since we have black 1 and white 1, I need to construct a guess that could produce this result.\n\nLet me try: 1 2 3 4\n\nThis would give us:\n- If the secret is 1 2 3 4, we'd get black 4, white 0 (wrong)\n- If the secret is 1 2 4 3, we'd get black 2, white 2 (wrong)\n- If the secret is 1 3 2 4, we'd get black 1, white 2 (wrong)\n- If the secret is 2 1 3 4, we'd get black 1, white 1 (this could work!)\n\nLet me try: 1 3 2 4\nThis would give us black 1, white 1 if the secret is 1 3 2 4, but I need to be more careful.\n\nActually, let me reconsider what we know:\n- One digit is in the correct position\n- One digit is correct but in the wrong position\n- Two digits are completely wrong\n\nLet me try: 1 3 4 5\n\nWait, let me be more methodical. I'll try: 1 2 3 4\n\nActually, let me try: 1 3 2 4\n\nNo, let me try: 1 4 2 3\n\nLet me try: 2 1 3 4\n\nActually, let me try: 3 1 2 4\n\nLet me try: 1 2 4 3\n\nThis could work - if secret is 1 2 4 3:\n- Position 1: 1 vs 1 \u2192 correct position (black 1)\n- Position 2: 2 vs 2 \u2192 correct position (but wait, that would be black 2)\n\nLet me reconsider the first guess more carefully.\n\nIf 1 1 2 2 gives black 1, white 1, then:\n- One of the 1's is in the right position\n- One of the 2's is in the right position\n- But that would be 2 correct positions, not 1\n\nWait, I misread. Let me re-read:\n1 1 2 2 \u2192 black 1, white 1\n\nThis means:\n- Exactly 1 digit is in the correct position\n- Exactly 1 digit is the correct digit but in the wrong position\n- The other 2 digits are wrong\n\nSo if we have 1 1 2 2:\n- One of the 1's is in the right position\n- One of the 2's is in the right position\n- But that would be 2 correct positions, not 1\n\nActually, let me think differently. The 1's and 2's are just the guess - they could be in any positions in the",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 15.3790864944458
+    },
+    {
+      "turn": 3,
+      "guess": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "black": 0,
+      "white": 1,
+      "repeat": false,
+      "seconds": 7.327218770980835,
+      "raw": "Looking at the feedback from the first two turns:\n\nTurn 1 (1 1 2 2): black 1, white 1\nThis means exactly one peg is in the correct position and one peg has the correct digit but wrong position.\n\nTurn 2 (0 0 0 0): black -1, white -1\nWait, this doesn't make sense. Black and white can't be negative. Let me re-read...\n\nActually, I think there might be a misunderstanding in the problem statement. The second guess was 0 0 0 0, but since the digits should be 1-6, this guess is invalid. However, I'll proceed with the logic.\n\nFrom turn 1 (1 1 2 2) with black 1, white 1:\n- One digit is in the correct position\n- One digit is correct but in the wrong position\n- The other two positions have incorrect digits\n\nSince we know the secret uses digits 1-6, and the guess was 1 1 2 2, let's think about what this tells us:\n- If position 1 had a 1, that would be correct\n- If position 2 had a 1, that would be correct  \n- If position 3 had a 2, that would be correct\n- If position 4 had a 2, that would be correct\n\nLet me try a systematic approach. Since we have black 1, white 1 from the first guess, and we know the secret uses digits 1-6, let's try a guess that's different from the first.\n\nLet me try: 1 2 3 4\n\nWait, let me reconsider the constraints more carefully. The first guess was 1 1 2 2 with black 1, white 1.\n\nLet me try: 1 3 4 5\n\nActually, let me be more methodical. I'll try: 1 2 3 4\n\nGUESS: 1 2 3 4"
+    },
+    {
+      "turn": 4,
+      "raw": "Let me analyze the feedback from each turn to deduce the secret code.\n\nTurn 1: Guess 1 1 2 2 \u2192 black 1, white 1\nThis means exactly one digit is in the correct position, and one digit is correct but in the wrong position.\n\nTurn 2: Guess 0 0 0 0 \u2192 black -1, white -1\nWait, this doesn't make sense. Black and white can't be negative. Let me re-read... \n\nActually, looking more carefully at the format, it seems like the feedback was black 1, white 1 for turn 1, and then for turn 2 it says black -1, white -1, which must be a typo in the problem statement. I'll assume turn 2 was actually black 0, white 0 (meaning no correct digits at all).\n\nTurn 3: Guess 1 2 3 4 \u2192 black 0, white 1\nThis means exactly one digit is correct but in the wrong position.\n\nLet me reconsider turn 1 with guess 1 1 2 2 \u2192 black 1, white 1:\n- One digit is in the correct position\n- One digit is correct but in the wrong position\n\nFrom turn 3 (1 2 3 4) \u2192 black 0, white 1:\n- One digit from {1,2,3,4} is correct but in wrong position\n\nLet's think about what digits could be in the secret code:\n- From turn 1, we know 1 and 2 are involved (since we have 1 1 2 2)\n- From turn 3, we know 1,2,3,4 are involved, but only one of them is in the right position\n\nLet's say the secret code is a,b,c,d.\n\nFrom turn 1 (1 1 2 2) with black 1, white 1:\n- One of the positions has the correct digit in the correct place\n- One of the positions has a correct digit but in wrong place\n\nFrom turn 3 (1 2 3 4) with black 0, white 1:\n- None of the positions match exactly\n- One digit from {1,2,3,4} is correct but in wrong position\n\nLet me try to work with the constraints:\nIf 1 is in the secret code, it must be in position 3 or 4 (since it's not in position 1 or 2 from turn 1's black=1, and from turn 3 it's not in position 1 or 2).\nIf 2 is in the secret code, it must be in position 1 or 2 (since it's not in position 3 or 4 from turn 1's black=1, and from turn 3 it's not in position 3 or 4).\n\nActually, let me reconsider turn 2. It's likely that the feedback was black 0, white 0 (no correct digits), not negative numbers.\n\nSo:\nTurn 1: 1 1 2 2 \u2192 black 1, white 1\nTurn 2: 0 0 0 0 \u2192 black 0, white 0  \nTurn 3: 1 2 3 4 \u2192 black 0, white 1\n\nFrom turn 1: One digit in correct position, one digit correct but wrong position.\nFrom turn 2: No digits are 0, so 0 is not in the secret code.\nFrom turn 3: One digit from {1,2,3,4} is correct but in wrong position.\n\nLet's say the secret code is a,b,c,d.\n\nSince 0 is not in the code, the digits are from {1,2,3,4,5,6}.\n\nFrom turn 1 (1 1 2 2) with black 1, white 1:\nOne digit matches in position, one digit is correct but wrong position.\n\nLet's say position 1 has correct digit. Then a = 1.\nThen we have 1 1 2 2 and a=1, so we have 1 _ _ _ and we need one more 1 or 2 in the right place, and one 2 in",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 14.991019487380981
+    },
+    {
+      "turn": 5,
+      "raw": "Let me analyze the feedback step by step.\n\nFrom Turn 1 (1 1 2 2): black 1, white 1\nThis means exactly one peg is in the correct position, and one peg has the correct digit but wrong position.\n\nFrom Turn 2 (0 0 0 0): black -1, white -1\nThis is invalid - black and white can't be negative. I should have guessed 1 1 1 1 instead.\n\nLet me reconsider Turn 2 with a valid guess:\nTurn 2: you guessed 1 1 1 1 -> black 0, white 2\nThis means 2 digits are correct but in wrong positions.\n\nWait, let me re-read the game rules. The feedback is given as black = correct digit in correct position, white = correct digit in wrong position.\n\nFrom Turn 1 (1 1 2 2): black 1, white 1\nSo one digit is in the right position, one digit is correct but in wrong position.\n\nFrom Turn 3 (1 2 3 4): black 0, white 1\nSo one digit is correct but in wrong position.\n\nLet me think about what digits are in the code:\n- From Turn 1: We have two 1's and two 2's, with one correct position and one correct digit in wrong position\n- From Turn 3: We have 1,2,3,4 with one correct digit in wrong position\n\nSince Turn 3 shows 1,2,3,4 and only 1 digit is correct in wrong position, and we know from Turn 1 that 1 and 2 appear in the code, let's think about this more systematically.\n\nActually, let me re-read Turn 2. It says \"black -1, white -1\" which seems like an error in the game setup. I'll assume it was meant to be a valid guess.\n\nLet me work with what I know:\n- Turn 1 (1 1 2 2): 1 black, 1 white\n- Turn 3 (1 2 3 4): 0 black, 1 white\n\nFrom Turn 3, one digit is correct but in wrong position. Since we have 1,2,3,4 and 0 black, the digits 1,2,3,4 are all present in the code but not in their current positions.\n\nSo the code contains digits 1,2,3,4 but not in positions 1,2,3,4 respectively.\n\nFrom Turn 1, we know there are two 1's and two 2's, and one digit is in correct position.\n\nLet me try a systematic approach:\nIf the code is 1 2 3 4, then Turn 3 would give 0 black, 4 white - but we got 0 black, 1 white.\n\nLet me try a different approach. Let's say the code is 1 2 3 4, and we know from Turn 1 that one digit is in correct position.\n\nActually, let me be more careful about the constraints:\n- Turn 1 (1 1 2 2): 1 correct position, 1 correct digit wrong position\n- Turn 3 (1 2 3 4): 0 correct positions, 1 correct digit wrong position\n\nLet's say the code is 1 2 3 4. Then:\n- Turn 1 (1 1 2 2) would give 0 black, 2 white (since 1,2 are in code but wrong positions)\n- Turn 3 (1 2 3 4) would give 0 black, 4 white\n\nThis doesn't match. Let me try 2 1 3 4:\n- Turn 1 (1 1 2 2) would give 0 black, 2 white (1,2 in code but wrong positions)\n- Turn 3 (1 2 3 4) would give 0 black, 3 white (1,2,3,4 in code but wrong positions)\n\nLet me try 2 1 4 3:\n- Turn 1 (1 1 2 2) would give 0 black, 2 white (1",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 15.366153478622437
+    },
+    {
+      "turn": 6,
+      "raw": "Let me analyze the feedback step by step.\n\nFrom Turn 1 (1 1 2 2): black 1, white 1\n- One digit is in the correct position\n- One digit is the right digit but in the wrong position\n- The digits 1 and 2 appear twice each\n\nFrom Turn 2 (0 0 0 0): black -1, white -1\n- This guess is invalid (0 is not allowed - digits must be 1-6)\n- But it tells us that 0 is not in the code\n\nFrom Turn 3 (1 2 3 4): black 0, white 1\n- No digits in correct positions\n- One digit is the right digit but in the wrong position\n- Since 1 and 2 were in the first guess, and now 1 2 3 4, we know that 1 and 2 are not in positions 1 and 2 respectively\n\nFrom Turn 4 (0 0 0 0): black -1, white -1\n- Again invalid, but confirms 0 not in code\n\nFrom Turn 5 (0 0 0 0): black -1, white -1\n- Again invalid, confirms 0 not in code\n\nLet me reconsider the first guess more carefully:\n1 1 2 2 with black 1, white 1 means:\n- One of the 1s or 2s is in the correct position\n- One of the other 1s or 2s is present but in the wrong position\n\nSince Turn 3 (1 2 3 4) gave black 0, white 1, and we know from Turn 1 that there's one 1 and one 2 in the correct positions, let's think about where they could be.\n\nIf 1 is in position 1, then 2 must be in position 2 (but that would give black 2, not black 1).\nIf 1 is in position 2, then 2 must be in position 1 (but that would give black 2, not black 1).\nIf 1 is in position 3, then 2 must be in position 4 (but that would give black 2, not black 1).\nIf 1 is in position 4, then 2 must be in position 3 (but that would give black 2, not black 1).\n\nWait, let me re-read this more carefully. \n\nActually, let me think of it this way:\n- From Turn 1 (1 1 2 2): 1 correct position, 1 correct digit wrong position\n- From Turn 3 (1 2 3 4): 0 correct positions, 1 correct digit wrong position\n\nThis means that the 1 and 2 from Turn 1 are not both in the right positions in Turn 3.\n\nLet me try a different approach. Looking at the constraints:\n- The code contains digits 1-6\n- From Turn 1: 1 1 2 2 with result black 1, white 1\n- From Turn 3: 1 2 3 4 with result black 0, white 1\n\nLet's say the code is a, b, c, d.\n\nIf 1 is in position 1 of the code, then 1 1 2 2 would have black 1 (the first 1) and white 1 (the second 1 in the wrong position). But that's not right either.\n\nLet me think of it as: in 1 1 2 2, one digit is in the correct position, one digit is the right digit but in the wrong position.\n\nLet's say the code is 1 2 1 2 (positions 1 2 3 4):\n- Guess 1 1 2 2: position 1 has 1=1 (black 1), position 2 has 1\u22602 (white 1), position 3 has 2\u22601 (white 1), position 4 has 2=2 (black 1) - that's black 2, white 2, not black 1, white 1.\n\nLet's try code 1 2 ",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 15.429089307785034
+    },
+    {
+      "turn": 7,
+      "raw": "Looking at the feedback so far:\n\nTurn 1 (1 1 2 2): black 1, white 1\n- One digit is in the correct position\n- One digit is the right digit but in the wrong position\n\nTurn 2 (0 0 0 0): black -1, white -1\n- This guess was invalid (0s aren't allowed - digits must be 1-6)\n\nTurn 3 (1 2 3 4): black 0, white 1\n- No digits in correct positions\n- One digit is the right digit but in the wrong position\n\nTurn 4-6 (0 0 0 0): all invalid guesses\n\nLet me reconsider the valid feedback:\n- From turn 1: 1 1 2 2 gives black 1, white 1\n- From turn 3: 1 2 3 4 gives black 0, white 1\n\nThe key insight is that the digit 1 appears twice in the first guess, and we have 1 black and 1 white in that guess. This means:\n- One of the 1's is in the correct position\n- One of the 2's is the right digit but in the wrong position\n\nFrom turn 3, we know that 1 2 3 4 gives 0 black and 1 white, meaning one of these digits (1,2,3,4) is correct but in the wrong position.\n\nSince we know from turn 1 that either the first or second position has a 1, and from turn 3 that there's a digit that's correct but misplaced, let's think about what digits could be in the secret code.\n\nLooking at the constraints more carefully:\n- Turn 1: 1 1 2 2 \u2192 1 black, 1 white\n- Turn 3: 1 2 3 4 \u2192 0 black, 1 white\n\nLet me try a systematic approach. Since turn 3 gave 0 black, none of the digits 1,2,3,4 are in the correct positions. \n\nIf we have 1 black and 1 white from turn 1, and we know that 1 2 3 4 has 0 black and 1 white, then:\n- The 1 from turn 1 must be in the wrong position (since 1 2 3 4 has 0 black, so 1 can't be in position 1)\n- The 2 from turn 1 must be in the wrong position (since 1 2 3 4 has 0 black, so 2 can't be in position 2)\n- But we still have 1 black and 1 white from turn 1, so one of the 1's or 2's must be in the correct position\n\nWait, let me re-read turn 1 more carefully. The guess was 1 1 2 2 with black 1, white 1.\n\nThis means:\n- One digit is correct and in the right position\n- One digit is correct but in the wrong position\n\nLet's say the secret is 1 x y z where x,y,z are unknown digits from 1-6.\nIf the 1 in position 1 is correct, then we have 1 black, and we need 1 white from the remaining 1 2 2.\nBut that would mean one of the 2's is correct but in wrong position.\n\nLet me try: 1 2 1 2\n- Position 1: 1 - if secret is 1 x y z, this could be correct\n- Position 2: 2 - if secret is x 2 y z, this could be correct  \n- Position 3: 1 - if secret is x y 1 z, this could be correct\n- Position 4: 2 - if secret is x y z 2, this could be correct\n\nLet's try 1 2 1 2:\n- If secret is 1 2 1 2, then:\n  - Turn 1 (1 1 2 2): 1 black (position 1), 1 white (position 3) \u2713\n  - Turn 3 (1 2 3",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 15.241563081741333
+    },
+    {
+      "turn": 8,
+      "guess": [
+        5,
+        6,
+        5,
+        6
+      ],
+      "black": 1,
+      "white": 1,
+      "repeat": false,
+      "seconds": 9.851846933364868,
+      "raw": "Looking at the game so far:\n\nFrom Turn 1 (1 1 2 2): black 1, white 1\nThis means exactly 1 digit is in the correct position, and 1 digit is correct but in the wrong position.\n\nFrom Turn 2 (0 0 0 0): black -1, white -1\nThis is clearly an invalid guess since 0 is not a valid digit (digits are 1-6). This seems like a mistake in the game record.\n\nFrom Turn 3 (1 2 3 4): black 0, white 1\nThis means 1 digit is correct but in the wrong position, none are in the correct position.\n\nFrom Turns 4-7 (all 0 0 0 0): These are also invalid guesses.\n\nLet me focus on the valid information:\n- Turn 1: 1 1 2 2 gives black 1, white 1\n- Turn 3: 1 2 3 4 gives black 0, white 1\n\nFrom Turn 1, we know:\n- One of the positions has the correct digit in the correct spot\n- One of the positions has a correct digit but in the wrong spot\n- The remaining two positions have incorrect digits\n\nFrom Turn 3, we know:\n- None of the digits 1, 2, 3, 4 are in the correct positions\n- Exactly one of these digits is present in the secret code (but in a different position)\n\nSince 1 2 3 4 all have black 0, the secret code doesn't contain any of these digits in positions 1, 2, 3, 4 respectively.\n\nSo the secret code must contain digits from {5, 6} in positions 1, 2, 3, 4.\n\nBut wait, let me reconsider Turn 1 more carefully:\n1 1 2 2 with black 1, white 1 means:\n- One digit is in the correct position\n- One digit is correct but in the wrong position\n\nLooking at the pattern, if we have 1 1 2 2 and we know that one digit is in the right position, and one digit is correct but in the wrong position, let's think about what the secret could be.\n\nLet's try a different approach. Since Turn 3 (1 2 3 4) gave black 0, white 1, and we know the secret doesn't contain 1, 2, 3, or 4 in their respective positions, the secret must contain one of {5,6} in one of the positions.\n\nLet's try: 5 6 5 6\n\nGUESS: 5 6 5 6"
+    },
+    {
+      "turn": 9,
+      "guess": [
+        1,
+        3,
+        5,
+        6
+      ],
+      "black": 1,
+      "white": 1,
+      "repeat": false,
+      "seconds": 7.624441862106323,
+      "raw": "Let me analyze the feedback step by step:\n\nFrom Turn 1 (1 1 2 2): black 1, white 1\n- One digit is in the correct position\n- One digit is the right digit but in the wrong position\n\nFrom Turn 3 (1 2 3 4): black 0, white 1\n- No digits in correct positions\n- One digit is the right digit but in the wrong position\n\nFrom Turn 8 (5 6 5 6): black 1, white 1\n- One digit is in the correct position\n- One digit is the right digit but in the wrong position\n\nLooking at the repeated guesses of 0 0 0 0, these seem to be invalid guesses (0 is not a valid digit 1-6), so I should ignore those.\n\nLet me think about what we know:\n- From Turn 1: We have one correct digit in correct position, one correct digit in wrong position\n- From Turn 3: We have one correct digit in wrong position (but no correct positions)\n- From Turn 8: We have one correct digit in correct position, one correct digit in wrong position\n\nLet me reconsider the valid feedback:\n- Turn 1 (1 1 2 2): 1 black, 1 white\n- Turn 3 (1 2 3 4): 0 black, 1 white  \n- Turn 8 (5 6 5 6): 1 black, 1 white\n\nFrom Turn 1, we know one of the 1's or 2's is in the correct position.\nFrom Turn 3, we know one of 1,2,3,4 is correct but not in position 1,2,3,4.\nFrom Turn 8, we know one of 5,6 is in correct position, and one is correct digit in wrong position.\n\nLet me try a systematic approach. Looking at the pattern, let's try 1 3 5 6:\n\nGUESS: 1 3 5 6"
+    },
+    {
+      "turn": 10,
+      "guess": [
+        5,
+        6,
+        1,
+        3
+      ],
+      "black": 1,
+      "white": 1,
+      "repeat": false,
+      "seconds": 9.787928819656372,
+      "raw": "Let me analyze the feedback step by step:\n\nFrom Turn 1 (1 1 2 2): black 1, white 1\n- One digit is in the correct position\n- One digit is correct but in the wrong position\n\nFrom Turn 3 (1 2 3 4): black 0, white 1\n- No digits in correct positions\n- One digit is correct but in wrong position\n\nFrom Turn 8 (5 6 5 6): black 1, white 1\n- One digit in correct position\n- One digit correct but in wrong position\n\nFrom Turn 9 (1 3 5 6): black 1, white 1\n- One digit in correct position\n- One digit correct but in wrong position\n\nLooking at the patterns:\n- Turn 1: 1 1 2 2 \u2192 1 correct in position, 1 correct but wrong position\n- Turn 3: 1 2 3 4 \u2192 1 correct but wrong position (no matches in position)\n- Turn 8: 5 6 5 6 \u2192 1 correct in position, 1 correct but wrong position\n- Turn 9: 1 3 5 6 \u2192 1 correct in position, 1 correct but wrong position\n\nThe key insight is that 5 and 6 appear in multiple positions in the last two guesses, and we know from Turn 8 that one 5 and one 6 are correct. From Turn 9, we see that 5 and 6 are also present, and one digit is in the right position.\n\nLet me reconsider the constraints more carefully:\n- From Turn 1: We have 1,1,2,2 with 1 black and 1 white\n- From Turn 3: We have 1,2,3,4 with 0 black and 1 white\n- From Turn 8: We have 5,6,5,6 with 1 black and 1 white  \n- From Turn 9: We have 1,3,5,6 with 1 black and 1 white\n\nLooking at the 5,6 combinations, if 5 and 6 are both in the solution, and we have 1 black and 1 white from Turn 8, then one of the 5s or 6s is in the correct position.\n\nLet me try a systematic approach. Looking at the 5,6 pattern and the 1,3,5,6 pattern from Turn 9, and considering that 5 and 6 are both present in the solution, let's try a guess that incorporates this knowledge.\n\nGUESS: 5 6 1 3"
+    },
+    {
+      "turn": 11,
+      "guess": [
+        1,
+        6,
+        5,
+        3
+      ],
+      "black": 0,
+      "white": 2,
+      "repeat": false,
+      "seconds": 7.3754026889801025,
+      "raw": "Looking at the feedback so far:\n\nFrom Turn 1 (1 1 2 2): 1 black, 1 white\nFrom Turn 8 (5 6 5 6): 1 black, 1 white  \nFrom Turn 9 (1 3 5 6): 1 black, 1 white\nFrom Turn 10 (5 6 1 3): 1 black, 1 white\n\nThe repeated guesses (0 0 0 0) seem to be invalid - they contain 0s which aren't allowed (digits 1-6 only).\n\nLet me analyze what we know:\n- Turn 1: One digit is in the correct position, one digit is correct but in wrong position\n- Turn 8: One digit is in correct position, one digit is correct but in wrong position  \n- Turn 9: One digit is in correct position, one digit is correct but in wrong position\n- Turn 10: One digit is in correct position, one digit is correct but in wrong position\n\nLooking at the patterns, I notice that 5 and 6 appear frequently in the last three turns. Let me try to construct a guess that could satisfy the constraints.\n\nFrom Turn 1 (1 1 2 2): We know there's one correct digit in correct position, one correct digit in wrong position.\nFrom Turn 8 (5 6 5 6): One correct digit in correct position, one correct digit in wrong position.\nFrom Turn 9 (1 3 5 6): One correct digit in correct position, one correct digit in wrong position.\nFrom Turn 10 (5 6 1 3): One correct digit in correct position, one correct digit in wrong position.\n\nLet me try a guess that incorporates some of the digits that have appeared in successful positions.\n\nLooking at the pattern, let me try: 1 6 5 3\n\nGUESS: 1 6 5 3"
+    },
+    {
+      "turn": 12,
+      "raw": "Let me analyze the feedback step by step to deduce the secret code.\n\nFrom Turn 1 (1 1 2 2): black 1, white 1\nThis means exactly one digit is in the correct position, and one digit is correct but in the wrong position.\n\nFrom Turn 3 (1 2 3 4): black 0, white 1\nThis means exactly one digit is correct but in the wrong position, and the other three digits are wrong.\n\nFrom Turn 8 (5 6 5 6): black 1, white 1\nThis means one digit is in the correct position, and one digit is correct but in the wrong position.\n\nFrom Turn 9 (1 3 5 6): black 1, white 1\nThis means one digit is in the correct position, and one digit is correct but in the wrong position.\n\nFrom Turn 10 (5 6 1 3): black 1, white 1\nThis means one digit is in the correct position, and one digit is correct but in the wrong position.\n\nFrom Turn 11 (1 6 5 3): black 0, white 2\nThis means two digits are correct but in the wrong positions, and none are in the correct position.\n\nLet me reconsider the feedback from Turn 2 and 4-7. The responses were black -1, white -1, which seems like an error in communication. I'll assume these were meant to be black 0, white 0 (no correct digits) or similar, but I'll focus on the meaningful feedback.\n\nLooking at the consistent patterns:\n- Turns 8, 9, 10 all have black 1, white 1\n- This suggests that in each of these guesses, exactly one digit is in the correct position and one digit is correct but in the wrong position\n\nLet me work with the key information:\n- From Turn 1: 1 1 2 2 \u2192 1 black, 1 white\n- From Turn 3: 1 2 3 4 \u2192 0 black, 1 white  \n- From Turn 8: 5 6 5 6 \u2192 1 black, 1 white\n- From Turn 9: 1 3 5 6 \u2192 1 black, 1 white\n- From Turn 10: 5 6 1 3 \u2192 1 black, 1 white\n- From Turn 11: 1 6 5 3 \u2192 0 black, 2 white\n\nLet me try to deduce what digits must be in the code:\n- The digit 1 appears in positions 1, 3, 4 of the guesses\n- The digit 6 appears in positions 2, 4 of the guesses\n- The digit 5 appears in positions 1, 3 of the guesses\n\nLooking at Turn 11 (1 6 5 3) with 0 black, 2 white:\nIf 1, 6, 5, 3 are all wrong in their positions, then the actual code must contain 2 of these digits in different positions.\n\nLet me try a systematic approach. Looking at the pattern from the last few turns:\nIf 5 6 1 3 gives 0 black, 2 white, then 2 of these digits are in the code but in different positions.\n\nLet me try: 1 5 6 3\nChecking against Turn 11: 1 5 6 3 vs 1 6 5 3\n- Position 1: 1 = 1, so black 1 (but we want 0 black)\nThis doesn't work.\n\nLet me try: 3 5 6 1\nChecking Turn 11: 3 5 6 1 vs 1 6 5 3\n- Position 1: 3 \u2260 1, but 3 is in position 4 of the guess\n- Position 2: 5 \u2260 6, but 5 is in position 3 of the guess  \n- Position 3: 6 \u2260 5, but 6 is in position 2 of the guess\n- Position 4: 1 \u2260 3, but ",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 16.10749387741089
+    }
+  ]
+}
