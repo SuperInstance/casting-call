@@ -1,0 +1,90 @@
+{
+  "game": "mastermind",
+  "seed": 42,
+  "secret": [
+    6,
+    1,
+    1,
+    6
+  ],
+  "model": "/home/caseydigennaro/liquid-lab/models/LFM2.5-24B-A2B-Q4_K_M.gguf",
+  "base": "http://127.0.0.1:8003/v1",
+  "solved_turn": null,
+  "max_turns": 12,
+  "invalid_guesses": 12,
+  "repeat_guesses": 0,
+  "moves": [
+    {
+      "turn": 1,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.48584508895874
+    },
+    {
+      "turn": 2,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.38184380531311
+    },
+    {
+      "turn": 3,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.320404529571533
+    },
+    {
+      "turn": 4,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.451069355010986
+    },
+    {
+      "turn": 5,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.408085107803345
+    },
+    {
+      "turn": 6,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.436469554901123
+    },
+    {
+      "turn": 7,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.422622680664062
+    },
+    {
+      "turn": 8,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.415357828140259
+    },
+    {
+      "turn": 9,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.548877477645874
+    },
+    {
+      "turn": 10,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.474374294281006
+    },
+    {
+      "turn": 11,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.363624334335327
+    },
+    {
+      "turn": 12,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 12.4421226978302
+    }
+  ]
+}
