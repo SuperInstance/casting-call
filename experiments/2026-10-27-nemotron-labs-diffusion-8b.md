@@ -163,3 +163,80 @@ How this entry came to be — decisions, dead ends, and deviations, recorded as 
 ## Casting note
 
 Battery 5/7 passed; mean decode 969735.1 tok/s across battery probes; Mastermind seed 42: solved in 11 guesses. Full judgement from the numbers and verbatim outputs above. (Casting note assembled from the record by the bench harness.)
+
+
+## Addendum — mode vs mode (same day, follow-up runs)
+
+The headline entry above ran the headline **block-diffusion** mode. The model's
+distinguishing feature is that one checkpoint serves three decoding modes,
+switched by attention pattern rather than by weights: plain autoregressive
+(AR), block diffusion, and self-speculation ("QuadSpec" — the model's own
+diffusion path, enhanced by the bundled `linear_spec_lora` adapter, drafts
+blocks that the same model then verifies). The standard battery was run
+against all three modes through the identical shim; only the mode flag
+changed. Temperature 0 throughout; wall-clock totals are the honest measure
+(the harness's decode-rate column is an artefact for shim-served models —
+single-chunk SSE makes total minus TTFT collapse towards zero).
+
+| Probe | Diffusion | AR | QuadSpec |
+|---|---|---|---|
+| add-function | pass · 1.12 s | pass · 1.53 s | pass · 0.92 s |
+| reasoning-rates | pass · 6.66 s | pass · 9.72 s | pass · 3.25 s |
+| reasoning-bat-and-ball | pass · 7.82 s | pass · 10.51 s | pass · 2.07 s |
+| coding-merge-intervals | pass · 2.60 s | pass · 6.44 s | pass · 0.91 s |
+| constraint-summary | fail · 5.77 s | fail · 9.50 s | fail · 2.09 s |
+| knowledge-canberra | pass · 3.31 s | pass · 2.94 s | pass · 1.71 s |
+| long-generation | fail · 17.83 s | pass · 30.57 s | pass · 21.81 s |
+| **Score / battery wall total** | **5/7 · 45.1 s** | **6/7 · 71.3 s** | **6/7 · 32.7 s** |
+
+Tokens per forward pass (NFE), measured on the reasoning-rates probe with an
+identical 600-token budget in each mode — the cross-mode currency, since a
+"token rate" means different things under each sampler:
+
+| Mode | Completion tokens | Forwards (NFE) | Tokens / forward | Wall |
+|---|---|---|---|---|
+| AR | 135 | 136 | 0.99 | 10.28 s |
+| Diffusion | 157 | 83 | 1.89 | 7.41 s |
+| QuadSpec | 151 | 39 | 3.87 | 3.40 s |
+
+Where the modes diverge:
+
+- **Constraint-summary fails in all three modes** (three bullets, but 14–20
+  words each against a 12-word limit). That is a property of the model, not
+  the sampler: no decoding mode buys format discipline here.
+- **Long-generation is diffusion's weak joint**: it stops early (227 tokens
+  against a ~400-word brief) and fails, while AR (425 tokens) and QuadSpec
+  (421 tokens) both complete the brief and pass. On open-ended generation
+  the diffusion mode's stopping behaviour, not its quality per token, is
+  what costs it.
+- **QuadSpec is the surprise**: fastest on five of seven probes and 2.2×
+  AR's battery wall total, at equal score. Its advantage concentrates in
+  structured reasoning and code (merge-intervals 0.91 s vs AR's 6.44 s) —
+  exactly where a drafted block is most likely to verify whole.
+
+Process corrections and completions to the record above:
+
+- The chain's first run (10:39) failed end to end with HTTP 500s and briefly
+  published an empty version of this entry, superseded by the run recorded
+  above. Cause: the model's `generate` asserts the token budget is a whole
+  multiple of the 32-token block; the battery's budgets are not. The shim
+  now rounds budgets up to a block multiple (EOS trimming discards the
+  excess; reported token counts are post-trim and honest).
+- Loading mattered: a post-load `.cuda()` move of the full BF16 weights
+  spun inside `cuMemAlloc` for over seven minutes without completing.
+  Streaming the weights directly with `device_map="cuda"` loads the same
+  checkpoint in ~36 s. The shim now loads all its models that way.
+- QuadSpec initially failed every probe with a `ValueError` from the KV
+  cache: the vendor's cache-crop helper calls `crop()` with the legacy
+  absolute-length semantics, which transformers 5.20.2 rejects. A per-layer
+  compatibility translation in the shim (crop each layer TO the target
+  length by removing exactly its own excess) restored the mode without
+  touching the model's code; the 6/7 above is with that patch.
+- The writing's publication outcome has moved on from the "could not be
+  filed" line in the harness section above: the piece was filed to
+  `FICTION/gothic/2026-10-27-title-the-echo-of-the-shore.md`, corpus-guard
+  passed (9m50s — some twenty seconds after the publisher's ten-minute poll
+  window closed, which is why the chain recorded PUBLISH-FAILED), and
+  PR #100 was merged; "The Echo of the Shore" is live on AI-Writings main.
+  Cosmetic wart, recorded: the filename slug carries the piece's literal
+  title line, prefix and all.
