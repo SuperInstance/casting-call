@@ -16,6 +16,7 @@ Seed 42 fixture unless noted. Fewer guesses is better; a dash means unsolved in 
 | nemotron-labs-diffusion-8b | 1 | 1 | 11 | 6 | 0 |
 | qwen3-coder-30b:latest | 1 | 0 | — | 6 | 0 |
 | qwen3.5:9b | 1 | 0 | — | 12 | 0 |
+| sumi-7b | 1 | 0 | — | 12 | 0 |
 
 ## Fixtures
 
@@ -31,3 +32,4 @@ Seed 42 fixture unless noted. Fewer guesses is better; a dash means unsolved in 
 - **nemotron-labs-diffusion-8b** — seed 42 (secret [6, 1, 1, 6]): solved in 11; invalid 6, repeats 0. Record: records/match-nemotron-labs-diffusion-8b-42.json
 - **qwen3-coder-30b:latest** — seed 42 (secret [6, 1, 1, 6]): unsolved; invalid 6, repeats 0. Record: records/match-qwen3-coder-30b-42.json
 - **qwen3.5:9b** — seed 42 (secret [6, 1, 1, 6]): unsolved; invalid 12, repeats 0. Record: records/match-qwen35-9b-42.json
+- **sumi-7b** — seed 42 (secret [6, 1, 1, 6]): unsolved; invalid 12, repeats 0. Record: records/match-sumi-7b-42.json
