@@ -6,8 +6,10 @@ Seed 42 fixture unless noted. Fewer guesses is better; a dash means unsolved in 
 |---|---|---|---|---|---|
 | Qwen3-Coder-30B-A3B-Instruct | 1 | 0 | — | 7 | 1 |
 | nemotron-3-nano:30b | 1 | 0 | — | 11 | 0 |
+| qwen3.5:9b | 1 | 0 | — | 12 | 0 |
 
 ## Fixtures
 
 - **nemotron-3-nano:30b** — seed 42 (secret [6, 1, 1, 6]): unsolved; invalid 11, repeats 0. Record: records/match-001-nemotron.json
 - **Qwen3-Coder-30B-A3B-Instruct** — seed 42 (secret [6, 1, 1, 6]): unsolved; invalid 7, repeats 1. Record: records/match-001-qwen3-coder-30b.json
+- **qwen3.5:9b** — seed 42 (secret [6, 1, 1, 6]): unsolved; invalid 12, repeats 0. Record: records/match-qwen35-9b-42.json

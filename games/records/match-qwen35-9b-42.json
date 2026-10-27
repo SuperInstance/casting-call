@@ -1,0 +1,90 @@
+{
+  "game": "mastermind",
+  "seed": 42,
+  "secret": [
+    6,
+    1,
+    1,
+    6
+  ],
+  "model": "qwen3.5:9b",
+  "base": "http://127.0.0.1:11434/v1",
+  "solved_turn": null,
+  "max_turns": 12,
+  "invalid_guesses": 12,
+  "repeat_guesses": 0,
+  "moves": [
+    {
+      "turn": 1,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 75.60860466957092
+    },
+    {
+      "turn": 2,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 67.36911034584045
+    },
+    {
+      "turn": 3,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 70.64962935447693
+    },
+    {
+      "turn": 4,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 67.11108207702637
+    },
+    {
+      "turn": 5,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 64.58358860015869
+    },
+    {
+      "turn": 6,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 41.00471806526184
+    },
+    {
+      "turn": 7,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 30.505587100982666
+    },
+    {
+      "turn": 8,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 30.47470784187317
+    },
+    {
+      "turn": 9,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 31.027204275131226
+    },
+    {
+      "turn": 10,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 31.418545484542847
+    },
+    {
+      "turn": 11,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 30.069053411483765
+    },
+    {
+      "turn": 12,
+      "raw": "",
+      "parse": "INVALID - no GUESS line",
+      "seconds": 30.460880279541016
+    }
+  ]
+}
